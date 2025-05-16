@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id            String            @id @default(uuid())
+  email         String            @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  provider      String?
+  providerId    String?
+  referralCode  String? // used if someone has invited the user
+  countryId     Int?
+  phone         String?
+  dateOfBirth   String?
+  acceptedTerms Boolean           @default(false)
+  mfaEnabled    Boolean           @default(false)
+  mfaSecret     String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime?         @updatedAt
+  deletedAt     DateTime?
+  roles         UserRoleMapping[]
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model Roles {
+  id        String            @id @default(uuid())
+  role      Role              @default(USER)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime?
+  deletedAt DateTime?
+  users     UserRoleMapping[]
+}
+
+model UserRoleMapping {
+  id        String    @id @default(uuid())
+  userId    String
+  roleId    String
+  users     Users     @relation(fields: [userId], references: [id])
+  roles     Roles     @relation(fields: [roleId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+}
+
+model Coins {
+  id               String @id @default(uuid())
+  coinId           BigInt
+  nameId           String
+  name             String
+  priceUsd         String
+  percentChange24h String
+  percentChange1h  String
+  percentChange7d  String
+  priceBtc         String
+  volume24         String
+  volmne24a        String
+}
