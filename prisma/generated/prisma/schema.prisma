@@ -59,7 +59,7 @@ model UserRoleMapping {
 
 model Coins {
   id               String @id @default(uuid())
-  coinId           BigInt
+  coinId           BigInt @unique
   nameId           String
   name             String
   priceUsd         String

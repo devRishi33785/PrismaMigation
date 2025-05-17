@@ -6256,10 +6256,10 @@ export namespace Prisma {
 
   export type CoinsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    coinId?: bigint | number
     AND?: CoinsWhereInput | CoinsWhereInput[]
     OR?: CoinsWhereInput[]
     NOT?: CoinsWhereInput | CoinsWhereInput[]
-    coinId?: BigIntFilter<"Coins"> | bigint | number
     nameId?: StringFilter<"Coins"> | string
     name?: StringFilter<"Coins"> | string
     priceUsd?: StringFilter<"Coins"> | string
@@ -6272,7 +6272,7 @@ export namespace Prisma {
     symbol?: StringFilter<"Coins"> | string
     marketCapUsd?: StringFilter<"Coins"> | string
     rank?: IntFilter<"Coins"> | number
-  }, "id">
+  }, "id" | "coinId">
 
   export type CoinsOrderByWithAggregationInput = {
     id?: SortOrder
