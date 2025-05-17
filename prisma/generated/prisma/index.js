@@ -198,7 +198,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -211,13 +211,13 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "fromEnvVar": null,
+        "value": "postgres://postgres:123456@localhost:5432/globalDB2?sslmode=disabled"
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Users {\n  id            String            @id @default(uuid())\n  email         String            @unique\n  password      String\n  firstName     String?\n  lastName      String?\n  provider      String?\n  providerId    String?\n  referralCode  String? // used if someone has invited the user\n  countryId     Int?\n  phone         String?\n  dateOfBirth   String?\n  acceptedTerms Boolean           @default(false)\n  mfaEnabled    Boolean           @default(false)\n  mfaSecret     String?\n  createdAt     DateTime          @default(now())\n  updatedAt     DateTime?         @updatedAt\n  deletedAt     DateTime?\n  roles         UserRoleMapping[]\n}\n\nenum Role {\n  ADMIN\n  USER\n}\n\nmodel Roles {\n  id        String            @id @default(uuid())\n  role      Role              @default(USER)\n  createdAt DateTime          @default(now())\n  updatedAt DateTime?\n  deletedAt DateTime?\n  users     UserRoleMapping[]\n}\n\nmodel UserRoleMapping {\n  id        String    @id @default(uuid())\n  userId    String\n  roleId    String\n  users     Users     @relation(fields: [userId], references: [id])\n  roles     Roles     @relation(fields: [roleId], references: [id])\n  createdAt DateTime  @default(now())\n  updatedAt DateTime? @updatedAt\n  deletedAt DateTime?\n}\n\nmodel Coins {\n  id               String @id @default(uuid())\n  coinId           BigInt\n  nameId           String\n  name             String\n  priceUsd         String\n  percentChange24h String\n  percentChange1h  String\n  percentChange7d  String\n  priceBtc         String\n  volume24         String\n  volmne24a        String\n}\n",
-  "inlineSchemaHash": "6b097ec1488b4aa39f3fa49f6325a28443dea1e0fa78d91e579892d6af1e5d69",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = \"postgres://postgres:123456@localhost:5432/globalDB2?sslmode=disabled\"\n}\n\nmodel Users {\n  id            String            @id @default(uuid())\n  email         String            @unique\n  password      String\n  firstName     String?\n  lastName      String?\n  provider      String?\n  providerId    String?\n  referralCode  String? // used if someone has invited the user\n  countryId     Int?\n  phone         String?\n  dateOfBirth   String?\n  acceptedTerms Boolean           @default(false)\n  mfaEnabled    Boolean           @default(false)\n  mfaSecret     String?\n  createdAt     DateTime          @default(now())\n  updatedAt     DateTime?         @updatedAt\n  deletedAt     DateTime?\n  roles         UserRoleMapping[]\n}\n\nenum Role {\n  ADMIN\n  USER\n}\n\nmodel Roles {\n  id        String            @id @default(uuid())\n  role      Role              @default(USER)\n  createdAt DateTime          @default(now())\n  updatedAt DateTime?\n  deletedAt DateTime?\n  users     UserRoleMapping[]\n}\n\nmodel UserRoleMapping {\n  id        String    @id @default(uuid())\n  userId    String\n  roleId    String\n  users     Users     @relation(fields: [userId], references: [id])\n  roles     Roles     @relation(fields: [roleId], references: [id])\n  createdAt DateTime  @default(now())\n  updatedAt DateTime? @updatedAt\n  deletedAt DateTime?\n}\n\nmodel Coins {\n  id               String @id @default(uuid())\n  coinId           BigInt\n  nameId           String\n  name             String\n  priceUsd         String\n  percentChange24h String\n  percentChange1h  String\n  percentChange7d  String\n  priceBtc         String\n  volume24         String\n  volmne24a        String\n}\n",
+  "inlineSchemaHash": "8fbdb7dfcbb3c8ab701864b9847476d96bd3833aacc0941ad11f2a625cb0decd",
   "copyEngine": true
 }
 
