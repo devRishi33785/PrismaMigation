@@ -4659,7 +4659,7 @@ export namespace Prisma {
     percentChange1h: string | null
     percentChange7d: string | null
     priceBtc: string | null
-    volumn24: string | null
+    volume24: string | null
     volume24a: string | null
     symbol: string | null
   }
@@ -4674,7 +4674,7 @@ export namespace Prisma {
     percentChange1h: string | null
     percentChange7d: string | null
     priceBtc: string | null
-    volumn24: string | null
+    volume24: string | null
     volume24a: string | null
     symbol: string | null
   }
@@ -4689,7 +4689,7 @@ export namespace Prisma {
     percentChange1h: number
     percentChange7d: number
     priceBtc: number
-    volumn24: number
+    volume24: number
     volume24a: number
     symbol: number
     _all: number
@@ -4714,7 +4714,7 @@ export namespace Prisma {
     percentChange1h?: true
     percentChange7d?: true
     priceBtc?: true
-    volumn24?: true
+    volume24?: true
     volume24a?: true
     symbol?: true
   }
@@ -4729,7 +4729,7 @@ export namespace Prisma {
     percentChange1h?: true
     percentChange7d?: true
     priceBtc?: true
-    volumn24?: true
+    volume24?: true
     volume24a?: true
     symbol?: true
   }
@@ -4744,7 +4744,7 @@ export namespace Prisma {
     percentChange1h?: true
     percentChange7d?: true
     priceBtc?: true
-    volumn24?: true
+    volume24?: true
     volume24a?: true
     symbol?: true
     _all?: true
@@ -4846,7 +4846,7 @@ export namespace Prisma {
     percentChange1h: string
     percentChange7d: string
     priceBtc: string
-    volumn24: string
+    volume24: string
     volume24a: string
     symbol: string
     _count: CoinsCountAggregateOutputType | null
@@ -4880,7 +4880,7 @@ export namespace Prisma {
     percentChange1h?: boolean
     percentChange7d?: boolean
     priceBtc?: boolean
-    volumn24?: boolean
+    volume24?: boolean
     volume24a?: boolean
     symbol?: boolean
   }, ExtArgs["result"]["coins"]>
@@ -4895,7 +4895,7 @@ export namespace Prisma {
     percentChange1h?: boolean
     percentChange7d?: boolean
     priceBtc?: boolean
-    volumn24?: boolean
+    volume24?: boolean
     volume24a?: boolean
     symbol?: boolean
   }, ExtArgs["result"]["coins"]>
@@ -4910,7 +4910,7 @@ export namespace Prisma {
     percentChange1h?: boolean
     percentChange7d?: boolean
     priceBtc?: boolean
-    volumn24?: boolean
+    volume24?: boolean
     volume24a?: boolean
     symbol?: boolean
   }, ExtArgs["result"]["coins"]>
@@ -4925,12 +4925,12 @@ export namespace Prisma {
     percentChange1h?: boolean
     percentChange7d?: boolean
     priceBtc?: boolean
-    volumn24?: boolean
+    volume24?: boolean
     volume24a?: boolean
     symbol?: boolean
   }
 
-  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volumn24" | "volume24a" | "symbol", ExtArgs["result"]["coins"]>
+  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volume24a" | "symbol", ExtArgs["result"]["coins"]>
 
   export type $CoinsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coins"
@@ -4945,7 +4945,7 @@ export namespace Prisma {
       percentChange1h: string
       percentChange7d: string
       priceBtc: string
-      volumn24: string
+      volume24: string
       volume24a: string
       symbol: string
     }, ExtArgs["result"]["coins"]>
@@ -5380,7 +5380,7 @@ export namespace Prisma {
     readonly percentChange1h: FieldRef<"Coins", 'String'>
     readonly percentChange7d: FieldRef<"Coins", 'String'>
     readonly priceBtc: FieldRef<"Coins", 'String'>
-    readonly volumn24: FieldRef<"Coins", 'String'>
+    readonly volume24: FieldRef<"Coins", 'String'>
     readonly volume24a: FieldRef<"Coins", 'String'>
     readonly symbol: FieldRef<"Coins", 'String'>
   }
@@ -5819,7 +5819,7 @@ export namespace Prisma {
     percentChange1h: 'percentChange1h',
     percentChange7d: 'percentChange7d',
     priceBtc: 'priceBtc',
-    volumn24: 'volumn24',
+    volume24: 'volume24',
     volume24a: 'volume24a',
     symbol: 'symbol'
   };
@@ -6198,7 +6198,7 @@ export namespace Prisma {
     percentChange1h?: StringFilter<"Coins"> | string
     percentChange7d?: StringFilter<"Coins"> | string
     priceBtc?: StringFilter<"Coins"> | string
-    volumn24?: StringFilter<"Coins"> | string
+    volume24?: StringFilter<"Coins"> | string
     volume24a?: StringFilter<"Coins"> | string
     symbol?: StringFilter<"Coins"> | string
   }
@@ -6213,7 +6213,7 @@ export namespace Prisma {
     percentChange1h?: SortOrder
     percentChange7d?: SortOrder
     priceBtc?: SortOrder
-    volumn24?: SortOrder
+    volume24?: SortOrder
     volume24a?: SortOrder
     symbol?: SortOrder
   }
@@ -6231,7 +6231,7 @@ export namespace Prisma {
     percentChange1h?: StringFilter<"Coins"> | string
     percentChange7d?: StringFilter<"Coins"> | string
     priceBtc?: StringFilter<"Coins"> | string
-    volumn24?: StringFilter<"Coins"> | string
+    volume24?: StringFilter<"Coins"> | string
     volume24a?: StringFilter<"Coins"> | string
     symbol?: StringFilter<"Coins"> | string
   }, "id">
@@ -6246,7 +6246,7 @@ export namespace Prisma {
     percentChange1h?: SortOrder
     percentChange7d?: SortOrder
     priceBtc?: SortOrder
-    volumn24?: SortOrder
+    volume24?: SortOrder
     volume24a?: SortOrder
     symbol?: SortOrder
     _count?: CoinsCountOrderByAggregateInput
@@ -6269,7 +6269,7 @@ export namespace Prisma {
     percentChange1h?: StringWithAggregatesFilter<"Coins"> | string
     percentChange7d?: StringWithAggregatesFilter<"Coins"> | string
     priceBtc?: StringWithAggregatesFilter<"Coins"> | string
-    volumn24?: StringWithAggregatesFilter<"Coins"> | string
+    volume24?: StringWithAggregatesFilter<"Coins"> | string
     volume24a?: StringWithAggregatesFilter<"Coins"> | string
     symbol?: StringWithAggregatesFilter<"Coins"> | string
   }
@@ -6549,7 +6549,7 @@ export namespace Prisma {
     percentChange1h: string
     percentChange7d: string
     priceBtc: string
-    volumn24: string
+    volume24: string
     volume24a: string
     symbol: string
   }
@@ -6564,7 +6564,7 @@ export namespace Prisma {
     percentChange1h: string
     percentChange7d: string
     priceBtc: string
-    volumn24: string
+    volume24: string
     volume24a: string
     symbol: string
   }
@@ -6579,7 +6579,7 @@ export namespace Prisma {
     percentChange1h?: StringFieldUpdateOperationsInput | string
     percentChange7d?: StringFieldUpdateOperationsInput | string
     priceBtc?: StringFieldUpdateOperationsInput | string
-    volumn24?: StringFieldUpdateOperationsInput | string
+    volume24?: StringFieldUpdateOperationsInput | string
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
   }
@@ -6594,7 +6594,7 @@ export namespace Prisma {
     percentChange1h?: StringFieldUpdateOperationsInput | string
     percentChange7d?: StringFieldUpdateOperationsInput | string
     priceBtc?: StringFieldUpdateOperationsInput | string
-    volumn24?: StringFieldUpdateOperationsInput | string
+    volume24?: StringFieldUpdateOperationsInput | string
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
   }
@@ -6609,7 +6609,7 @@ export namespace Prisma {
     percentChange1h: string
     percentChange7d: string
     priceBtc: string
-    volumn24: string
+    volume24: string
     volume24a: string
     symbol: string
   }
@@ -6624,7 +6624,7 @@ export namespace Prisma {
     percentChange1h?: StringFieldUpdateOperationsInput | string
     percentChange7d?: StringFieldUpdateOperationsInput | string
     priceBtc?: StringFieldUpdateOperationsInput | string
-    volumn24?: StringFieldUpdateOperationsInput | string
+    volume24?: StringFieldUpdateOperationsInput | string
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
   }
@@ -6639,7 +6639,7 @@ export namespace Prisma {
     percentChange1h?: StringFieldUpdateOperationsInput | string
     percentChange7d?: StringFieldUpdateOperationsInput | string
     priceBtc?: StringFieldUpdateOperationsInput | string
-    volumn24?: StringFieldUpdateOperationsInput | string
+    volume24?: StringFieldUpdateOperationsInput | string
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
   }
@@ -6982,7 +6982,7 @@ export namespace Prisma {
     percentChange1h?: SortOrder
     percentChange7d?: SortOrder
     priceBtc?: SortOrder
-    volumn24?: SortOrder
+    volume24?: SortOrder
     volume24a?: SortOrder
     symbol?: SortOrder
   }
@@ -7001,7 +7001,7 @@ export namespace Prisma {
     percentChange1h?: SortOrder
     percentChange7d?: SortOrder
     priceBtc?: SortOrder
-    volumn24?: SortOrder
+    volume24?: SortOrder
     volume24a?: SortOrder
     symbol?: SortOrder
   }
@@ -7016,7 +7016,7 @@ export namespace Prisma {
     percentChange1h?: SortOrder
     percentChange7d?: SortOrder
     priceBtc?: SortOrder
-    volumn24?: SortOrder
+    volume24?: SortOrder
     volume24a?: SortOrder
     symbol?: SortOrder
   }

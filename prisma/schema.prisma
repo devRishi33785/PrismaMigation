@@ -67,7 +67,7 @@ model Coins {
   percentChange1h  String
   percentChange7d  String
   priceBtc         String
-  volumn24         String
+  volume24         String
   volume24a        String
   symbol           String
 }

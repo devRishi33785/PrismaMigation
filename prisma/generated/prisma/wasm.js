@@ -167,7 +167,7 @@ exports.Prisma.CoinsScalarFieldEnum = {
   percentChange1h: 'percentChange1h',
   percentChange7d: 'percentChange7d',
   priceBtc: 'priceBtc',
-  volumn24: 'volumn24',
+  volume24: 'volume24',
   volume24a: 'volume24a',
   symbol: 'symbol'
 };
