@@ -170,7 +170,8 @@ exports.Prisma.CoinsScalarFieldEnum = {
   volume24: 'volume24',
   volume24a: 'volume24a',
   symbol: 'symbol',
-  marketCapUsd: 'marketCapUsd'
+  marketCapUsd: 'marketCapUsd',
+  rank: 'rank'
 };
 
 exports.Prisma.SortOrder = {

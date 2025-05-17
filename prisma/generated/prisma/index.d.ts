@@ -4643,10 +4643,12 @@ export namespace Prisma {
 
   export type CoinsAvgAggregateOutputType = {
     coinId: number | null
+    rank: number | null
   }
 
   export type CoinsSumAggregateOutputType = {
     coinId: bigint | null
+    rank: number | null
   }
 
   export type CoinsMinAggregateOutputType = {
@@ -4663,6 +4665,7 @@ export namespace Prisma {
     volume24a: string | null
     symbol: string | null
     marketCapUsd: string | null
+    rank: number | null
   }
 
   export type CoinsMaxAggregateOutputType = {
@@ -4679,6 +4682,7 @@ export namespace Prisma {
     volume24a: string | null
     symbol: string | null
     marketCapUsd: string | null
+    rank: number | null
   }
 
   export type CoinsCountAggregateOutputType = {
@@ -4695,16 +4699,19 @@ export namespace Prisma {
     volume24a: number
     symbol: number
     marketCapUsd: number
+    rank: number
     _all: number
   }
 
 
   export type CoinsAvgAggregateInputType = {
     coinId?: true
+    rank?: true
   }
 
   export type CoinsSumAggregateInputType = {
     coinId?: true
+    rank?: true
   }
 
   export type CoinsMinAggregateInputType = {
@@ -4721,6 +4728,7 @@ export namespace Prisma {
     volume24a?: true
     symbol?: true
     marketCapUsd?: true
+    rank?: true
   }
 
   export type CoinsMaxAggregateInputType = {
@@ -4737,6 +4745,7 @@ export namespace Prisma {
     volume24a?: true
     symbol?: true
     marketCapUsd?: true
+    rank?: true
   }
 
   export type CoinsCountAggregateInputType = {
@@ -4753,6 +4762,7 @@ export namespace Prisma {
     volume24a?: true
     symbol?: true
     marketCapUsd?: true
+    rank?: true
     _all?: true
   }
 
@@ -4856,6 +4866,7 @@ export namespace Prisma {
     volume24a: string
     symbol: string
     marketCapUsd: string
+    rank: number
     _count: CoinsCountAggregateOutputType | null
     _avg: CoinsAvgAggregateOutputType | null
     _sum: CoinsSumAggregateOutputType | null
@@ -4891,6 +4902,7 @@ export namespace Prisma {
     volume24a?: boolean
     symbol?: boolean
     marketCapUsd?: boolean
+    rank?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4907,6 +4919,7 @@ export namespace Prisma {
     volume24a?: boolean
     symbol?: boolean
     marketCapUsd?: boolean
+    rank?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4923,6 +4936,7 @@ export namespace Prisma {
     volume24a?: boolean
     symbol?: boolean
     marketCapUsd?: boolean
+    rank?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectScalar = {
@@ -4939,9 +4953,10 @@ export namespace Prisma {
     volume24a?: boolean
     symbol?: boolean
     marketCapUsd?: boolean
+    rank?: boolean
   }
 
-  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volume24a" | "symbol" | "marketCapUsd", ExtArgs["result"]["coins"]>
+  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volume24a" | "symbol" | "marketCapUsd" | "rank", ExtArgs["result"]["coins"]>
 
   export type $CoinsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coins"
@@ -4960,6 +4975,7 @@ export namespace Prisma {
       volume24a: string
       symbol: string
       marketCapUsd: string
+      rank: number
     }, ExtArgs["result"]["coins"]>
     composites: {}
   }
@@ -5396,6 +5412,7 @@ export namespace Prisma {
     readonly volume24a: FieldRef<"Coins", 'String'>
     readonly symbol: FieldRef<"Coins", 'String'>
     readonly marketCapUsd: FieldRef<"Coins", 'String'>
+    readonly rank: FieldRef<"Coins", 'Int'>
   }
     
 
@@ -5835,7 +5852,8 @@ export namespace Prisma {
     volume24: 'volume24',
     volume24a: 'volume24a',
     symbol: 'symbol',
-    marketCapUsd: 'marketCapUsd'
+    marketCapUsd: 'marketCapUsd',
+    rank: 'rank'
   };
 
   export type CoinsScalarFieldEnum = (typeof CoinsScalarFieldEnum)[keyof typeof CoinsScalarFieldEnum]
@@ -6216,6 +6234,7 @@ export namespace Prisma {
     volume24a?: StringFilter<"Coins"> | string
     symbol?: StringFilter<"Coins"> | string
     marketCapUsd?: StringFilter<"Coins"> | string
+    rank?: IntFilter<"Coins"> | number
   }
 
   export type CoinsOrderByWithRelationInput = {
@@ -6232,6 +6251,7 @@ export namespace Prisma {
     volume24a?: SortOrder
     symbol?: SortOrder
     marketCapUsd?: SortOrder
+    rank?: SortOrder
   }
 
   export type CoinsWhereUniqueInput = Prisma.AtLeast<{
@@ -6251,6 +6271,7 @@ export namespace Prisma {
     volume24a?: StringFilter<"Coins"> | string
     symbol?: StringFilter<"Coins"> | string
     marketCapUsd?: StringFilter<"Coins"> | string
+    rank?: IntFilter<"Coins"> | number
   }, "id">
 
   export type CoinsOrderByWithAggregationInput = {
@@ -6267,6 +6288,7 @@ export namespace Prisma {
     volume24a?: SortOrder
     symbol?: SortOrder
     marketCapUsd?: SortOrder
+    rank?: SortOrder
     _count?: CoinsCountOrderByAggregateInput
     _avg?: CoinsAvgOrderByAggregateInput
     _max?: CoinsMaxOrderByAggregateInput
@@ -6291,6 +6313,7 @@ export namespace Prisma {
     volume24a?: StringWithAggregatesFilter<"Coins"> | string
     symbol?: StringWithAggregatesFilter<"Coins"> | string
     marketCapUsd?: StringWithAggregatesFilter<"Coins"> | string
+    rank?: IntWithAggregatesFilter<"Coins"> | number
   }
 
   export type UsersCreateInput = {
@@ -6572,6 +6595,7 @@ export namespace Prisma {
     volume24a: string
     symbol: string
     marketCapUsd: string
+    rank: number
   }
 
   export type CoinsUncheckedCreateInput = {
@@ -6588,6 +6612,7 @@ export namespace Prisma {
     volume24a: string
     symbol: string
     marketCapUsd: string
+    rank: number
   }
 
   export type CoinsUpdateInput = {
@@ -6604,6 +6629,7 @@ export namespace Prisma {
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
+    rank?: IntFieldUpdateOperationsInput | number
   }
 
   export type CoinsUncheckedUpdateInput = {
@@ -6620,6 +6646,7 @@ export namespace Prisma {
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
+    rank?: IntFieldUpdateOperationsInput | number
   }
 
   export type CoinsCreateManyInput = {
@@ -6636,6 +6663,7 @@ export namespace Prisma {
     volume24a: string
     symbol: string
     marketCapUsd: string
+    rank: number
   }
 
   export type CoinsUpdateManyMutationInput = {
@@ -6652,6 +6680,7 @@ export namespace Prisma {
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
+    rank?: IntFieldUpdateOperationsInput | number
   }
 
   export type CoinsUncheckedUpdateManyInput = {
@@ -6668,6 +6697,7 @@ export namespace Prisma {
     volume24a?: StringFieldUpdateOperationsInput | string
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
+    rank?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6998,6 +7028,17 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type CoinsCountOrderByAggregateInput = {
     id?: SortOrder
     coinId?: SortOrder
@@ -7012,10 +7053,12 @@ export namespace Prisma {
     volume24a?: SortOrder
     symbol?: SortOrder
     marketCapUsd?: SortOrder
+    rank?: SortOrder
   }
 
   export type CoinsAvgOrderByAggregateInput = {
     coinId?: SortOrder
+    rank?: SortOrder
   }
 
   export type CoinsMaxOrderByAggregateInput = {
@@ -7032,6 +7075,7 @@ export namespace Prisma {
     volume24a?: SortOrder
     symbol?: SortOrder
     marketCapUsd?: SortOrder
+    rank?: SortOrder
   }
 
   export type CoinsMinOrderByAggregateInput = {
@@ -7048,10 +7092,12 @@ export namespace Prisma {
     volume24a?: SortOrder
     symbol?: SortOrder
     marketCapUsd?: SortOrder
+    rank?: SortOrder
   }
 
   export type CoinsSumOrderByAggregateInput = {
     coinId?: SortOrder
+    rank?: SortOrder
   }
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7068,6 +7114,22 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type UserRoleMappingCreateNestedManyWithoutUsersInput = {
@@ -7220,6 +7282,14 @@ export namespace Prisma {
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7449,6 +7519,22 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type UserRoleMappingCreateWithoutUsersInput = {

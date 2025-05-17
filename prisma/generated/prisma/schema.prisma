@@ -71,4 +71,5 @@ model Coins {
   volume24a        String
   symbol           String
   marketCapUsd     String
+  rank             Int
 }
