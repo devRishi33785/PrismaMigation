@@ -70,4 +70,5 @@ model Coins {
   volume24         String
   volume24a        String
   symbol           String
+  marketCapUsd     String
 }
