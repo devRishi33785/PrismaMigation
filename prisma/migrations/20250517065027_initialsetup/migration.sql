@@ -60,6 +60,7 @@ CREATE TABLE "Coins" (
     "priceBtc" TEXT NOT NULL,
     "volume24" TEXT NOT NULL,
     "volmne24a" TEXT NOT NULL,
+    "symbol" TEXT NOT NULL,
 
     CONSTRAINT "Coins_pkey" PRIMARY KEY ("id")
 );

@@ -4661,6 +4661,7 @@ export namespace Prisma {
     priceBtc: string | null
     volume24: string | null
     volmne24a: string | null
+    symbol: string | null
   }
 
   export type CoinsMaxAggregateOutputType = {
@@ -4675,6 +4676,7 @@ export namespace Prisma {
     priceBtc: string | null
     volume24: string | null
     volmne24a: string | null
+    symbol: string | null
   }
 
   export type CoinsCountAggregateOutputType = {
@@ -4689,6 +4691,7 @@ export namespace Prisma {
     priceBtc: number
     volume24: number
     volmne24a: number
+    symbol: number
     _all: number
   }
 
@@ -4713,6 +4716,7 @@ export namespace Prisma {
     priceBtc?: true
     volume24?: true
     volmne24a?: true
+    symbol?: true
   }
 
   export type CoinsMaxAggregateInputType = {
@@ -4727,6 +4731,7 @@ export namespace Prisma {
     priceBtc?: true
     volume24?: true
     volmne24a?: true
+    symbol?: true
   }
 
   export type CoinsCountAggregateInputType = {
@@ -4741,6 +4746,7 @@ export namespace Prisma {
     priceBtc?: true
     volume24?: true
     volmne24a?: true
+    symbol?: true
     _all?: true
   }
 
@@ -4842,6 +4848,7 @@ export namespace Prisma {
     priceBtc: string
     volume24: string
     volmne24a: string
+    symbol: string
     _count: CoinsCountAggregateOutputType | null
     _avg: CoinsAvgAggregateOutputType | null
     _sum: CoinsSumAggregateOutputType | null
@@ -4875,6 +4882,7 @@ export namespace Prisma {
     priceBtc?: boolean
     volume24?: boolean
     volmne24a?: boolean
+    symbol?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4889,6 +4897,7 @@ export namespace Prisma {
     priceBtc?: boolean
     volume24?: boolean
     volmne24a?: boolean
+    symbol?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4903,6 +4912,7 @@ export namespace Prisma {
     priceBtc?: boolean
     volume24?: boolean
     volmne24a?: boolean
+    symbol?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectScalar = {
@@ -4917,9 +4927,10 @@ export namespace Prisma {
     priceBtc?: boolean
     volume24?: boolean
     volmne24a?: boolean
+    symbol?: boolean
   }
 
-  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volmne24a", ExtArgs["result"]["coins"]>
+  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volmne24a" | "symbol", ExtArgs["result"]["coins"]>
 
   export type $CoinsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coins"
@@ -4936,6 +4947,7 @@ export namespace Prisma {
       priceBtc: string
       volume24: string
       volmne24a: string
+      symbol: string
     }, ExtArgs["result"]["coins"]>
     composites: {}
   }
@@ -5370,6 +5382,7 @@ export namespace Prisma {
     readonly priceBtc: FieldRef<"Coins", 'String'>
     readonly volume24: FieldRef<"Coins", 'String'>
     readonly volmne24a: FieldRef<"Coins", 'String'>
+    readonly symbol: FieldRef<"Coins", 'String'>
   }
     
 
@@ -5807,7 +5820,8 @@ export namespace Prisma {
     percentChange7d: 'percentChange7d',
     priceBtc: 'priceBtc',
     volume24: 'volume24',
-    volmne24a: 'volmne24a'
+    volmne24a: 'volmne24a',
+    symbol: 'symbol'
   };
 
   export type CoinsScalarFieldEnum = (typeof CoinsScalarFieldEnum)[keyof typeof CoinsScalarFieldEnum]
@@ -6186,6 +6200,7 @@ export namespace Prisma {
     priceBtc?: StringFilter<"Coins"> | string
     volume24?: StringFilter<"Coins"> | string
     volmne24a?: StringFilter<"Coins"> | string
+    symbol?: StringFilter<"Coins"> | string
   }
 
   export type CoinsOrderByWithRelationInput = {
@@ -6200,6 +6215,7 @@ export namespace Prisma {
     priceBtc?: SortOrder
     volume24?: SortOrder
     volmne24a?: SortOrder
+    symbol?: SortOrder
   }
 
   export type CoinsWhereUniqueInput = Prisma.AtLeast<{
@@ -6217,6 +6233,7 @@ export namespace Prisma {
     priceBtc?: StringFilter<"Coins"> | string
     volume24?: StringFilter<"Coins"> | string
     volmne24a?: StringFilter<"Coins"> | string
+    symbol?: StringFilter<"Coins"> | string
   }, "id">
 
   export type CoinsOrderByWithAggregationInput = {
@@ -6231,6 +6248,7 @@ export namespace Prisma {
     priceBtc?: SortOrder
     volume24?: SortOrder
     volmne24a?: SortOrder
+    symbol?: SortOrder
     _count?: CoinsCountOrderByAggregateInput
     _avg?: CoinsAvgOrderByAggregateInput
     _max?: CoinsMaxOrderByAggregateInput
@@ -6253,6 +6271,7 @@ export namespace Prisma {
     priceBtc?: StringWithAggregatesFilter<"Coins"> | string
     volume24?: StringWithAggregatesFilter<"Coins"> | string
     volmne24a?: StringWithAggregatesFilter<"Coins"> | string
+    symbol?: StringWithAggregatesFilter<"Coins"> | string
   }
 
   export type UsersCreateInput = {
@@ -6532,6 +6551,7 @@ export namespace Prisma {
     priceBtc: string
     volume24: string
     volmne24a: string
+    symbol: string
   }
 
   export type CoinsUncheckedCreateInput = {
@@ -6546,6 +6566,7 @@ export namespace Prisma {
     priceBtc: string
     volume24: string
     volmne24a: string
+    symbol: string
   }
 
   export type CoinsUpdateInput = {
@@ -6560,6 +6581,7 @@ export namespace Prisma {
     priceBtc?: StringFieldUpdateOperationsInput | string
     volume24?: StringFieldUpdateOperationsInput | string
     volmne24a?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoinsUncheckedUpdateInput = {
@@ -6574,6 +6596,7 @@ export namespace Prisma {
     priceBtc?: StringFieldUpdateOperationsInput | string
     volume24?: StringFieldUpdateOperationsInput | string
     volmne24a?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoinsCreateManyInput = {
@@ -6588,6 +6611,7 @@ export namespace Prisma {
     priceBtc: string
     volume24: string
     volmne24a: string
+    symbol: string
   }
 
   export type CoinsUpdateManyMutationInput = {
@@ -6602,6 +6626,7 @@ export namespace Prisma {
     priceBtc?: StringFieldUpdateOperationsInput | string
     volume24?: StringFieldUpdateOperationsInput | string
     volmne24a?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoinsUncheckedUpdateManyInput = {
@@ -6616,6 +6641,7 @@ export namespace Prisma {
     priceBtc?: StringFieldUpdateOperationsInput | string
     volume24?: StringFieldUpdateOperationsInput | string
     volmne24a?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6958,6 +6984,7 @@ export namespace Prisma {
     priceBtc?: SortOrder
     volume24?: SortOrder
     volmne24a?: SortOrder
+    symbol?: SortOrder
   }
 
   export type CoinsAvgOrderByAggregateInput = {
@@ -6976,6 +7003,7 @@ export namespace Prisma {
     priceBtc?: SortOrder
     volume24?: SortOrder
     volmne24a?: SortOrder
+    symbol?: SortOrder
   }
 
   export type CoinsMinOrderByAggregateInput = {
@@ -6990,6 +7018,7 @@ export namespace Prisma {
     priceBtc?: SortOrder
     volume24?: SortOrder
     volmne24a?: SortOrder
+    symbol?: SortOrder
   }
 
   export type CoinsSumOrderByAggregateInput = {

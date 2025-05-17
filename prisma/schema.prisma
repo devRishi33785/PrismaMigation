@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:123456@localhost:5432/globalDB2?sslmode=disabled"
+  url      = "postgres://postgres:123456@localhost:5432/coinservice?sslmode=disabled"
 }
 
 model Users {
@@ -69,4 +69,5 @@ model Coins {
   priceBtc         String
   volume24         String
   volmne24a        String
+  symbol           String
 }
