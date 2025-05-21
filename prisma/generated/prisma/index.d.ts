@@ -33,6 +33,11 @@ export type UserRoleMapping = $Result.DefaultSelection<Prisma.$UserRoleMappingPa
  * 
  */
 export type Coins = $Result.DefaultSelection<Prisma.$CoinsPayload>
+/**
+ * Model Devices
+ * 
+ */
+export type Devices = $Result.DefaultSelection<Prisma.$DevicesPayload>
 
 /**
  * Enums
@@ -215,6 +220,16 @@ export class PrismaClient<
     * ```
     */
   get coins(): Prisma.CoinsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.devices`: Exposes CRUD operations for the **Devices** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Devices
+    * const devices = await prisma.devices.findMany()
+    * ```
+    */
+  get devices(): Prisma.DevicesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -658,7 +673,8 @@ export namespace Prisma {
     Users: 'Users',
     Roles: 'Roles',
     UserRoleMapping: 'UserRoleMapping',
-    Coins: 'Coins'
+    Coins: 'Coins',
+    Devices: 'Devices'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -677,7 +693,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "roles" | "userRoleMapping" | "coins"
+      modelProps: "users" | "roles" | "userRoleMapping" | "coins" | "devices"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -977,6 +993,80 @@ export namespace Prisma {
           }
         }
       }
+      Devices: {
+        payload: Prisma.$DevicesPayload<ExtArgs>
+        fields: Prisma.DevicesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DevicesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DevicesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          findFirst: {
+            args: Prisma.DevicesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DevicesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          findMany: {
+            args: Prisma.DevicesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>[]
+          }
+          create: {
+            args: Prisma.DevicesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          createMany: {
+            args: Prisma.DevicesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DevicesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>[]
+          }
+          delete: {
+            args: Prisma.DevicesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          update: {
+            args: Prisma.DevicesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          deleteMany: {
+            args: Prisma.DevicesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DevicesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DevicesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>[]
+          }
+          upsert: {
+            args: Prisma.DevicesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevicesPayload>
+          }
+          aggregate: {
+            args: Prisma.DevicesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDevices>
+          }
+          groupBy: {
+            args: Prisma.DevicesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DevicesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DevicesCountArgs<ExtArgs>
+            result: $Utils.Optional<DevicesCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1065,6 +1155,7 @@ export namespace Prisma {
     roles?: RolesOmit
     userRoleMapping?: UserRoleMappingOmit
     coins?: CoinsOmit
+    devices?: DevicesOmit
   }
 
   /* Types for Logging */
@@ -1160,10 +1251,12 @@ export namespace Prisma {
 
   export type UsersCountOutputType = {
     roles: number
+    devices: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     roles?: boolean | UsersCountOutputTypeCountRolesArgs
+    devices?: boolean | UsersCountOutputTypeCountDevicesArgs
   }
 
   // Custom InputTypes
@@ -1182,6 +1275,13 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserRoleMappingWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountDevicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DevicesWhereInput
   }
 
 
@@ -1515,6 +1615,7 @@ export namespace Prisma {
     updatedAt?: boolean
     deletedAt?: boolean
     roles?: boolean | Users$rolesArgs<ExtArgs>
+    devices?: boolean | Users$devicesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -1581,6 +1682,7 @@ export namespace Prisma {
   export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "provider" | "providerId" | "referralCode" | "countryId" | "phone" | "dateOfBirth" | "acceptedTerms" | "mfaEnabled" | "mfaSecret" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     roles?: boolean | Users$rolesArgs<ExtArgs>
+    devices?: boolean | Users$devicesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UsersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1590,6 +1692,7 @@ export namespace Prisma {
     name: "Users"
     objects: {
       roles: Prisma.$UserRoleMappingPayload<ExtArgs>[]
+      devices: Prisma.$DevicesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2004,6 +2107,7 @@ export namespace Prisma {
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     roles<T extends Users$rolesArgs<ExtArgs> = {}>(args?: Subset<T, Users$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRoleMappingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    devices<T extends Users$devicesArgs<ExtArgs> = {}>(args?: Subset<T, Users$devicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2459,6 +2563,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserRoleMappingScalarFieldEnum | UserRoleMappingScalarFieldEnum[]
+  }
+
+  /**
+   * Users.devices
+   */
+  export type Users$devicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    where?: DevicesWhereInput
+    orderBy?: DevicesOrderByWithRelationInput | DevicesOrderByWithRelationInput[]
+    cursor?: DevicesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DevicesScalarFieldEnum | DevicesScalarFieldEnum[]
   }
 
   /**
@@ -4666,6 +4794,9 @@ export namespace Prisma {
     symbol: string | null
     marketCapUsd: string | null
     rank: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type CoinsMaxAggregateOutputType = {
@@ -4683,6 +4814,9 @@ export namespace Prisma {
     symbol: string | null
     marketCapUsd: string | null
     rank: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type CoinsCountAggregateOutputType = {
@@ -4700,6 +4834,9 @@ export namespace Prisma {
     symbol: number
     marketCapUsd: number
     rank: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
     _all: number
   }
 
@@ -4729,6 +4866,9 @@ export namespace Prisma {
     symbol?: true
     marketCapUsd?: true
     rank?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
   }
 
   export type CoinsMaxAggregateInputType = {
@@ -4746,6 +4886,9 @@ export namespace Prisma {
     symbol?: true
     marketCapUsd?: true
     rank?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
   }
 
   export type CoinsCountAggregateInputType = {
@@ -4763,6 +4906,9 @@ export namespace Prisma {
     symbol?: true
     marketCapUsd?: true
     rank?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
     _all?: true
   }
 
@@ -4867,6 +5013,9 @@ export namespace Prisma {
     symbol: string
     marketCapUsd: string
     rank: number
+    createdAt: Date
+    updatedAt: Date | null
+    deletedAt: Date | null
     _count: CoinsCountAggregateOutputType | null
     _avg: CoinsAvgAggregateOutputType | null
     _sum: CoinsSumAggregateOutputType | null
@@ -4903,6 +5052,9 @@ export namespace Prisma {
     symbol?: boolean
     marketCapUsd?: boolean
     rank?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4920,6 +5072,9 @@ export namespace Prisma {
     symbol?: boolean
     marketCapUsd?: boolean
     rank?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4937,6 +5092,9 @@ export namespace Prisma {
     symbol?: boolean
     marketCapUsd?: boolean
     rank?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
   }, ExtArgs["result"]["coins"]>
 
   export type CoinsSelectScalar = {
@@ -4954,9 +5112,12 @@ export namespace Prisma {
     symbol?: boolean
     marketCapUsd?: boolean
     rank?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
   }
 
-  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volume24a" | "symbol" | "marketCapUsd" | "rank", ExtArgs["result"]["coins"]>
+  export type CoinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coinId" | "nameId" | "name" | "priceUsd" | "percentChange24h" | "percentChange1h" | "percentChange7d" | "priceBtc" | "volume24" | "volume24a" | "symbol" | "marketCapUsd" | "rank" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["coins"]>
 
   export type $CoinsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coins"
@@ -4976,6 +5137,9 @@ export namespace Prisma {
       symbol: string
       marketCapUsd: string
       rank: number
+      createdAt: Date
+      updatedAt: Date | null
+      deletedAt: Date | null
     }, ExtArgs["result"]["coins"]>
     composites: {}
   }
@@ -5413,6 +5577,9 @@ export namespace Prisma {
     readonly symbol: FieldRef<"Coins", 'String'>
     readonly marketCapUsd: FieldRef<"Coins", 'String'>
     readonly rank: FieldRef<"Coins", 'Int'>
+    readonly createdAt: FieldRef<"Coins", 'DateTime'>
+    readonly updatedAt: FieldRef<"Coins", 'DateTime'>
+    readonly deletedAt: FieldRef<"Coins", 'DateTime'>
   }
     
 
@@ -5780,6 +5947,1129 @@ export namespace Prisma {
 
 
   /**
+   * Model Devices
+   */
+
+  export type AggregateDevices = {
+    _count: DevicesCountAggregateOutputType | null
+    _min: DevicesMinAggregateOutputType | null
+    _max: DevicesMaxAggregateOutputType | null
+  }
+
+  export type DevicesMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    fcmToken: string | null
+    deviceSignature: string | null
+    deviceType: string | null
+    appVersion: string | null
+    archive: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type DevicesMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    fcmToken: string | null
+    deviceSignature: string | null
+    deviceType: string | null
+    appVersion: string | null
+    archive: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type DevicesCountAggregateOutputType = {
+    id: number
+    userId: number
+    fcmToken: number
+    deviceSignature: number
+    deviceType: number
+    appVersion: number
+    archive: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type DevicesMinAggregateInputType = {
+    id?: true
+    userId?: true
+    fcmToken?: true
+    deviceSignature?: true
+    deviceType?: true
+    appVersion?: true
+    archive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type DevicesMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    fcmToken?: true
+    deviceSignature?: true
+    deviceType?: true
+    appVersion?: true
+    archive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type DevicesCountAggregateInputType = {
+    id?: true
+    userId?: true
+    fcmToken?: true
+    deviceSignature?: true
+    deviceType?: true
+    appVersion?: true
+    archive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type DevicesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Devices to aggregate.
+     */
+    where?: DevicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DevicesOrderByWithRelationInput | DevicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DevicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Devices
+    **/
+    _count?: true | DevicesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DevicesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DevicesMaxAggregateInputType
+  }
+
+  export type GetDevicesAggregateType<T extends DevicesAggregateArgs> = {
+        [P in keyof T & keyof AggregateDevices]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDevices[P]>
+      : GetScalarType<T[P], AggregateDevices[P]>
+  }
+
+
+
+
+  export type DevicesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DevicesWhereInput
+    orderBy?: DevicesOrderByWithAggregationInput | DevicesOrderByWithAggregationInput[]
+    by: DevicesScalarFieldEnum[] | DevicesScalarFieldEnum
+    having?: DevicesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DevicesCountAggregateInputType | true
+    _min?: DevicesMinAggregateInputType
+    _max?: DevicesMaxAggregateInputType
+  }
+
+  export type DevicesGroupByOutputType = {
+    id: string
+    userId: string
+    fcmToken: string | null
+    deviceSignature: string | null
+    deviceType: string | null
+    appVersion: string | null
+    archive: string | null
+    createdAt: Date
+    updatedAt: Date | null
+    deletedAt: Date | null
+    _count: DevicesCountAggregateOutputType | null
+    _min: DevicesMinAggregateOutputType | null
+    _max: DevicesMaxAggregateOutputType | null
+  }
+
+  type GetDevicesGroupByPayload<T extends DevicesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DevicesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DevicesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DevicesGroupByOutputType[P]>
+            : GetScalarType<T[P], DevicesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DevicesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    fcmToken?: boolean
+    deviceSignature?: boolean
+    deviceType?: boolean
+    appVersion?: boolean
+    archive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["devices"]>
+
+  export type DevicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    fcmToken?: boolean
+    deviceSignature?: boolean
+    deviceType?: boolean
+    appVersion?: boolean
+    archive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["devices"]>
+
+  export type DevicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    fcmToken?: boolean
+    deviceSignature?: boolean
+    deviceType?: boolean
+    appVersion?: boolean
+    archive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["devices"]>
+
+  export type DevicesSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    fcmToken?: boolean
+    deviceSignature?: boolean
+    deviceType?: boolean
+    appVersion?: boolean
+    archive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type DevicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fcmToken" | "deviceSignature" | "deviceType" | "appVersion" | "archive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["devices"]>
+  export type DevicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+  export type DevicesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+  export type DevicesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UsersDefaultArgs<ExtArgs>
+  }
+
+  export type $DevicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Devices"
+    objects: {
+      user: Prisma.$UsersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      fcmToken: string | null
+      deviceSignature: string | null
+      deviceType: string | null
+      appVersion: string | null
+      archive: string | null
+      createdAt: Date
+      updatedAt: Date | null
+      deletedAt: Date | null
+    }, ExtArgs["result"]["devices"]>
+    composites: {}
+  }
+
+  type DevicesGetPayload<S extends boolean | null | undefined | DevicesDefaultArgs> = $Result.GetResult<Prisma.$DevicesPayload, S>
+
+  type DevicesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DevicesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DevicesCountAggregateInputType | true
+    }
+
+  export interface DevicesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Devices'], meta: { name: 'Devices' } }
+    /**
+     * Find zero or one Devices that matches the filter.
+     * @param {DevicesFindUniqueArgs} args - Arguments to find a Devices
+     * @example
+     * // Get one Devices
+     * const devices = await prisma.devices.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DevicesFindUniqueArgs>(args: SelectSubset<T, DevicesFindUniqueArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Devices that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DevicesFindUniqueOrThrowArgs} args - Arguments to find a Devices
+     * @example
+     * // Get one Devices
+     * const devices = await prisma.devices.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DevicesFindUniqueOrThrowArgs>(args: SelectSubset<T, DevicesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Devices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesFindFirstArgs} args - Arguments to find a Devices
+     * @example
+     * // Get one Devices
+     * const devices = await prisma.devices.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DevicesFindFirstArgs>(args?: SelectSubset<T, DevicesFindFirstArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Devices that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesFindFirstOrThrowArgs} args - Arguments to find a Devices
+     * @example
+     * // Get one Devices
+     * const devices = await prisma.devices.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DevicesFindFirstOrThrowArgs>(args?: SelectSubset<T, DevicesFindFirstOrThrowArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Devices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Devices
+     * const devices = await prisma.devices.findMany()
+     * 
+     * // Get first 10 Devices
+     * const devices = await prisma.devices.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const devicesWithIdOnly = await prisma.devices.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DevicesFindManyArgs>(args?: SelectSubset<T, DevicesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Devices.
+     * @param {DevicesCreateArgs} args - Arguments to create a Devices.
+     * @example
+     * // Create one Devices
+     * const Devices = await prisma.devices.create({
+     *   data: {
+     *     // ... data to create a Devices
+     *   }
+     * })
+     * 
+     */
+    create<T extends DevicesCreateArgs>(args: SelectSubset<T, DevicesCreateArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Devices.
+     * @param {DevicesCreateManyArgs} args - Arguments to create many Devices.
+     * @example
+     * // Create many Devices
+     * const devices = await prisma.devices.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DevicesCreateManyArgs>(args?: SelectSubset<T, DevicesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Devices and returns the data saved in the database.
+     * @param {DevicesCreateManyAndReturnArgs} args - Arguments to create many Devices.
+     * @example
+     * // Create many Devices
+     * const devices = await prisma.devices.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Devices and only return the `id`
+     * const devicesWithIdOnly = await prisma.devices.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DevicesCreateManyAndReturnArgs>(args?: SelectSubset<T, DevicesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Devices.
+     * @param {DevicesDeleteArgs} args - Arguments to delete one Devices.
+     * @example
+     * // Delete one Devices
+     * const Devices = await prisma.devices.delete({
+     *   where: {
+     *     // ... filter to delete one Devices
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DevicesDeleteArgs>(args: SelectSubset<T, DevicesDeleteArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Devices.
+     * @param {DevicesUpdateArgs} args - Arguments to update one Devices.
+     * @example
+     * // Update one Devices
+     * const devices = await prisma.devices.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DevicesUpdateArgs>(args: SelectSubset<T, DevicesUpdateArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Devices.
+     * @param {DevicesDeleteManyArgs} args - Arguments to filter Devices to delete.
+     * @example
+     * // Delete a few Devices
+     * const { count } = await prisma.devices.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DevicesDeleteManyArgs>(args?: SelectSubset<T, DevicesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Devices
+     * const devices = await prisma.devices.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DevicesUpdateManyArgs>(args: SelectSubset<T, DevicesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Devices and returns the data updated in the database.
+     * @param {DevicesUpdateManyAndReturnArgs} args - Arguments to update many Devices.
+     * @example
+     * // Update many Devices
+     * const devices = await prisma.devices.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Devices and only return the `id`
+     * const devicesWithIdOnly = await prisma.devices.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DevicesUpdateManyAndReturnArgs>(args: SelectSubset<T, DevicesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Devices.
+     * @param {DevicesUpsertArgs} args - Arguments to update or create a Devices.
+     * @example
+     * // Update or create a Devices
+     * const devices = await prisma.devices.upsert({
+     *   create: {
+     *     // ... data to create a Devices
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Devices we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DevicesUpsertArgs>(args: SelectSubset<T, DevicesUpsertArgs<ExtArgs>>): Prisma__DevicesClient<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesCountArgs} args - Arguments to filter Devices to count.
+     * @example
+     * // Count the number of Devices
+     * const count = await prisma.devices.count({
+     *   where: {
+     *     // ... the filter for the Devices we want to count
+     *   }
+     * })
+    **/
+    count<T extends DevicesCountArgs>(
+      args?: Subset<T, DevicesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DevicesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DevicesAggregateArgs>(args: Subset<T, DevicesAggregateArgs>): Prisma.PrismaPromise<GetDevicesAggregateType<T>>
+
+    /**
+     * Group by Devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevicesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DevicesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DevicesGroupByArgs['orderBy'] }
+        : { orderBy?: DevicesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DevicesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDevicesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Devices model
+   */
+  readonly fields: DevicesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Devices.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DevicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Devices model
+   */
+  interface DevicesFieldRefs {
+    readonly id: FieldRef<"Devices", 'String'>
+    readonly userId: FieldRef<"Devices", 'String'>
+    readonly fcmToken: FieldRef<"Devices", 'String'>
+    readonly deviceSignature: FieldRef<"Devices", 'String'>
+    readonly deviceType: FieldRef<"Devices", 'String'>
+    readonly appVersion: FieldRef<"Devices", 'String'>
+    readonly archive: FieldRef<"Devices", 'String'>
+    readonly createdAt: FieldRef<"Devices", 'DateTime'>
+    readonly updatedAt: FieldRef<"Devices", 'DateTime'>
+    readonly deletedAt: FieldRef<"Devices", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Devices findUnique
+   */
+  export type DevicesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where: DevicesWhereUniqueInput
+  }
+
+  /**
+   * Devices findUniqueOrThrow
+   */
+  export type DevicesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where: DevicesWhereUniqueInput
+  }
+
+  /**
+   * Devices findFirst
+   */
+  export type DevicesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where?: DevicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DevicesOrderByWithRelationInput | DevicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Devices.
+     */
+    cursor?: DevicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Devices.
+     */
+    distinct?: DevicesScalarFieldEnum | DevicesScalarFieldEnum[]
+  }
+
+  /**
+   * Devices findFirstOrThrow
+   */
+  export type DevicesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where?: DevicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DevicesOrderByWithRelationInput | DevicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Devices.
+     */
+    cursor?: DevicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Devices.
+     */
+    distinct?: DevicesScalarFieldEnum | DevicesScalarFieldEnum[]
+  }
+
+  /**
+   * Devices findMany
+   */
+  export type DevicesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter, which Devices to fetch.
+     */
+    where?: DevicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Devices to fetch.
+     */
+    orderBy?: DevicesOrderByWithRelationInput | DevicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Devices.
+     */
+    cursor?: DevicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Devices.
+     */
+    skip?: number
+    distinct?: DevicesScalarFieldEnum | DevicesScalarFieldEnum[]
+  }
+
+  /**
+   * Devices create
+   */
+  export type DevicesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Devices.
+     */
+    data: XOR<DevicesCreateInput, DevicesUncheckedCreateInput>
+  }
+
+  /**
+   * Devices createMany
+   */
+  export type DevicesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Devices.
+     */
+    data: DevicesCreateManyInput | DevicesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Devices createManyAndReturn
+   */
+  export type DevicesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Devices.
+     */
+    data: DevicesCreateManyInput | DevicesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Devices update
+   */
+  export type DevicesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Devices.
+     */
+    data: XOR<DevicesUpdateInput, DevicesUncheckedUpdateInput>
+    /**
+     * Choose, which Devices to update.
+     */
+    where: DevicesWhereUniqueInput
+  }
+
+  /**
+   * Devices updateMany
+   */
+  export type DevicesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Devices.
+     */
+    data: XOR<DevicesUpdateManyMutationInput, DevicesUncheckedUpdateManyInput>
+    /**
+     * Filter which Devices to update
+     */
+    where?: DevicesWhereInput
+    /**
+     * Limit how many Devices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Devices updateManyAndReturn
+   */
+  export type DevicesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * The data used to update Devices.
+     */
+    data: XOR<DevicesUpdateManyMutationInput, DevicesUncheckedUpdateManyInput>
+    /**
+     * Filter which Devices to update
+     */
+    where?: DevicesWhereInput
+    /**
+     * Limit how many Devices to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Devices upsert
+   */
+  export type DevicesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Devices to update in case it exists.
+     */
+    where: DevicesWhereUniqueInput
+    /**
+     * In case the Devices found by the `where` argument doesn't exist, create a new Devices with this data.
+     */
+    create: XOR<DevicesCreateInput, DevicesUncheckedCreateInput>
+    /**
+     * In case the Devices was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DevicesUpdateInput, DevicesUncheckedUpdateInput>
+  }
+
+  /**
+   * Devices delete
+   */
+  export type DevicesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+    /**
+     * Filter which Devices to delete.
+     */
+    where: DevicesWhereUniqueInput
+  }
+
+  /**
+   * Devices deleteMany
+   */
+  export type DevicesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Devices to delete
+     */
+    where?: DevicesWhereInput
+    /**
+     * Limit how many Devices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Devices without action
+   */
+  export type DevicesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devices
+     */
+    select?: DevicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Devices
+     */
+    omit?: DevicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevicesInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5853,10 +7143,29 @@ export namespace Prisma {
     volume24a: 'volume24a',
     symbol: 'symbol',
     marketCapUsd: 'marketCapUsd',
-    rank: 'rank'
+    rank: 'rank',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
   };
 
   export type CoinsScalarFieldEnum = (typeof CoinsScalarFieldEnum)[keyof typeof CoinsScalarFieldEnum]
+
+
+  export const DevicesScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    fcmToken: 'fcmToken',
+    deviceSignature: 'deviceSignature',
+    deviceType: 'deviceType',
+    appVersion: 'appVersion',
+    archive: 'archive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type DevicesScalarFieldEnum = (typeof DevicesScalarFieldEnum)[keyof typeof DevicesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6004,6 +7313,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     roles?: UserRoleMappingListRelationFilter
+    devices?: DevicesListRelationFilter
   }
 
   export type UsersOrderByWithRelationInput = {
@@ -6025,6 +7335,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
     roles?: UserRoleMappingOrderByRelationAggregateInput
+    devices?: DevicesOrderByRelationAggregateInput
   }
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
@@ -6049,6 +7360,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     roles?: UserRoleMappingListRelationFilter
+    devices?: DevicesListRelationFilter
   }, "id" | "email">
 
   export type UsersOrderByWithAggregationInput = {
@@ -6235,6 +7547,9 @@ export namespace Prisma {
     symbol?: StringFilter<"Coins"> | string
     marketCapUsd?: StringFilter<"Coins"> | string
     rank?: IntFilter<"Coins"> | number
+    createdAt?: DateTimeFilter<"Coins"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Coins"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Coins"> | Date | string | null
   }
 
   export type CoinsOrderByWithRelationInput = {
@@ -6252,6 +7567,9 @@ export namespace Prisma {
     symbol?: SortOrder
     marketCapUsd?: SortOrder
     rank?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
   }
 
   export type CoinsWhereUniqueInput = Prisma.AtLeast<{
@@ -6272,6 +7590,9 @@ export namespace Prisma {
     symbol?: StringFilter<"Coins"> | string
     marketCapUsd?: StringFilter<"Coins"> | string
     rank?: IntFilter<"Coins"> | number
+    createdAt?: DateTimeFilter<"Coins"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Coins"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Coins"> | Date | string | null
   }, "id" | "coinId">
 
   export type CoinsOrderByWithAggregationInput = {
@@ -6289,6 +7610,9 @@ export namespace Prisma {
     symbol?: SortOrder
     marketCapUsd?: SortOrder
     rank?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     _count?: CoinsCountOrderByAggregateInput
     _avg?: CoinsAvgOrderByAggregateInput
     _max?: CoinsMaxOrderByAggregateInput
@@ -6314,6 +7638,89 @@ export namespace Prisma {
     symbol?: StringWithAggregatesFilter<"Coins"> | string
     marketCapUsd?: StringWithAggregatesFilter<"Coins"> | string
     rank?: IntWithAggregatesFilter<"Coins"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Coins"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Coins"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Coins"> | Date | string | null
+  }
+
+  export type DevicesWhereInput = {
+    AND?: DevicesWhereInput | DevicesWhereInput[]
+    OR?: DevicesWhereInput[]
+    NOT?: DevicesWhereInput | DevicesWhereInput[]
+    id?: StringFilter<"Devices"> | string
+    userId?: StringFilter<"Devices"> | string
+    fcmToken?: StringNullableFilter<"Devices"> | string | null
+    deviceSignature?: StringNullableFilter<"Devices"> | string | null
+    deviceType?: StringNullableFilter<"Devices"> | string | null
+    appVersion?: StringNullableFilter<"Devices"> | string | null
+    archive?: StringNullableFilter<"Devices"> | string | null
+    createdAt?: DateTimeFilter<"Devices"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+  }
+
+  export type DevicesOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    fcmToken?: SortOrderInput | SortOrder
+    deviceSignature?: SortOrderInput | SortOrder
+    deviceType?: SortOrderInput | SortOrder
+    appVersion?: SortOrderInput | SortOrder
+    archive?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    user?: UsersOrderByWithRelationInput
+  }
+
+  export type DevicesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DevicesWhereInput | DevicesWhereInput[]
+    OR?: DevicesWhereInput[]
+    NOT?: DevicesWhereInput | DevicesWhereInput[]
+    userId?: StringFilter<"Devices"> | string
+    fcmToken?: StringNullableFilter<"Devices"> | string | null
+    deviceSignature?: StringNullableFilter<"Devices"> | string | null
+    deviceType?: StringNullableFilter<"Devices"> | string | null
+    appVersion?: StringNullableFilter<"Devices"> | string | null
+    archive?: StringNullableFilter<"Devices"> | string | null
+    createdAt?: DateTimeFilter<"Devices"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
+  }, "id">
+
+  export type DevicesOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    fcmToken?: SortOrderInput | SortOrder
+    deviceSignature?: SortOrderInput | SortOrder
+    deviceType?: SortOrderInput | SortOrder
+    appVersion?: SortOrderInput | SortOrder
+    archive?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: DevicesCountOrderByAggregateInput
+    _max?: DevicesMaxOrderByAggregateInput
+    _min?: DevicesMinOrderByAggregateInput
+  }
+
+  export type DevicesScalarWhereWithAggregatesInput = {
+    AND?: DevicesScalarWhereWithAggregatesInput | DevicesScalarWhereWithAggregatesInput[]
+    OR?: DevicesScalarWhereWithAggregatesInput[]
+    NOT?: DevicesScalarWhereWithAggregatesInput | DevicesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Devices"> | string
+    userId?: StringWithAggregatesFilter<"Devices"> | string
+    fcmToken?: StringNullableWithAggregatesFilter<"Devices"> | string | null
+    deviceSignature?: StringNullableWithAggregatesFilter<"Devices"> | string | null
+    deviceType?: StringNullableWithAggregatesFilter<"Devices"> | string | null
+    appVersion?: StringNullableWithAggregatesFilter<"Devices"> | string | null
+    archive?: StringNullableWithAggregatesFilter<"Devices"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Devices"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Devices"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Devices"> | Date | string | null
   }
 
   export type UsersCreateInput = {
@@ -6335,6 +7742,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
     roles?: UserRoleMappingCreateNestedManyWithoutUsersInput
+    devices?: DevicesCreateNestedManyWithoutUserInput
   }
 
   export type UsersUncheckedCreateInput = {
@@ -6356,6 +7764,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
     roles?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
+    devices?: DevicesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UsersUpdateInput = {
@@ -6377,6 +7786,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     roles?: UserRoleMappingUpdateManyWithoutUsersNestedInput
+    devices?: DevicesUpdateManyWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateInput = {
@@ -6398,6 +7808,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     roles?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
+    devices?: DevicesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UsersCreateManyInput = {
@@ -6596,6 +8007,9 @@ export namespace Prisma {
     symbol: string
     marketCapUsd: string
     rank: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type CoinsUncheckedCreateInput = {
@@ -6613,6 +8027,9 @@ export namespace Prisma {
     symbol: string
     marketCapUsd: string
     rank: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type CoinsUpdateInput = {
@@ -6630,6 +8047,9 @@ export namespace Prisma {
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
     rank?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CoinsUncheckedUpdateInput = {
@@ -6647,6 +8067,9 @@ export namespace Prisma {
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
     rank?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CoinsCreateManyInput = {
@@ -6664,6 +8087,9 @@ export namespace Prisma {
     symbol: string
     marketCapUsd: string
     rank: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type CoinsUpdateManyMutationInput = {
@@ -6681,6 +8107,9 @@ export namespace Prisma {
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
     rank?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CoinsUncheckedUpdateManyInput = {
@@ -6698,6 +8127,99 @@ export namespace Prisma {
     symbol?: StringFieldUpdateOperationsInput | string
     marketCapUsd?: StringFieldUpdateOperationsInput | string
     rank?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesCreateInput = {
+    id?: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    user: UsersCreateNestedOneWithoutDevicesInput
+  }
+
+  export type DevicesUncheckedCreateInput = {
+    id?: string
+    userId: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DevicesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UsersUpdateOneRequiredWithoutDevicesNestedInput
+  }
+
+  export type DevicesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesCreateManyInput = {
+    id?: string
+    userId: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DevicesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6774,12 +8296,22 @@ export namespace Prisma {
     none?: UserRoleMappingWhereInput
   }
 
+  export type DevicesListRelationFilter = {
+    every?: DevicesWhereInput
+    some?: DevicesWhereInput
+    none?: DevicesWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type UserRoleMappingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DevicesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7054,6 +8586,9 @@ export namespace Prisma {
     symbol?: SortOrder
     marketCapUsd?: SortOrder
     rank?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type CoinsAvgOrderByAggregateInput = {
@@ -7076,6 +8611,9 @@ export namespace Prisma {
     symbol?: SortOrder
     marketCapUsd?: SortOrder
     rank?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type CoinsMinOrderByAggregateInput = {
@@ -7093,6 +8631,9 @@ export namespace Prisma {
     symbol?: SortOrder
     marketCapUsd?: SortOrder
     rank?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type CoinsSumOrderByAggregateInput = {
@@ -7132,6 +8673,45 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type DevicesCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    fcmToken?: SortOrder
+    deviceSignature?: SortOrder
+    deviceType?: SortOrder
+    appVersion?: SortOrder
+    archive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type DevicesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    fcmToken?: SortOrder
+    deviceSignature?: SortOrder
+    deviceType?: SortOrder
+    appVersion?: SortOrder
+    archive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type DevicesMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    fcmToken?: SortOrder
+    deviceSignature?: SortOrder
+    deviceType?: SortOrder
+    appVersion?: SortOrder
+    archive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
   export type UserRoleMappingCreateNestedManyWithoutUsersInput = {
     create?: XOR<UserRoleMappingCreateWithoutUsersInput, UserRoleMappingUncheckedCreateWithoutUsersInput> | UserRoleMappingCreateWithoutUsersInput[] | UserRoleMappingUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleMappingCreateOrConnectWithoutUsersInput | UserRoleMappingCreateOrConnectWithoutUsersInput[]
@@ -7139,11 +8719,25 @@ export namespace Prisma {
     connect?: UserRoleMappingWhereUniqueInput | UserRoleMappingWhereUniqueInput[]
   }
 
+  export type DevicesCreateNestedManyWithoutUserInput = {
+    create?: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput> | DevicesCreateWithoutUserInput[] | DevicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DevicesCreateOrConnectWithoutUserInput | DevicesCreateOrConnectWithoutUserInput[]
+    createMany?: DevicesCreateManyUserInputEnvelope
+    connect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+  }
+
   export type UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput = {
     create?: XOR<UserRoleMappingCreateWithoutUsersInput, UserRoleMappingUncheckedCreateWithoutUsersInput> | UserRoleMappingCreateWithoutUsersInput[] | UserRoleMappingUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleMappingCreateOrConnectWithoutUsersInput | UserRoleMappingCreateOrConnectWithoutUsersInput[]
     createMany?: UserRoleMappingCreateManyUsersInputEnvelope
     connect?: UserRoleMappingWhereUniqueInput | UserRoleMappingWhereUniqueInput[]
+  }
+
+  export type DevicesUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput> | DevicesCreateWithoutUserInput[] | DevicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DevicesCreateOrConnectWithoutUserInput | DevicesCreateOrConnectWithoutUserInput[]
+    createMany?: DevicesCreateManyUserInputEnvelope
+    connect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7188,6 +8782,20 @@ export namespace Prisma {
     deleteMany?: UserRoleMappingScalarWhereInput | UserRoleMappingScalarWhereInput[]
   }
 
+  export type DevicesUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput> | DevicesCreateWithoutUserInput[] | DevicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DevicesCreateOrConnectWithoutUserInput | DevicesCreateOrConnectWithoutUserInput[]
+    upsert?: DevicesUpsertWithWhereUniqueWithoutUserInput | DevicesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DevicesCreateManyUserInputEnvelope
+    set?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    disconnect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    delete?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    connect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    update?: DevicesUpdateWithWhereUniqueWithoutUserInput | DevicesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DevicesUpdateManyWithWhereWithoutUserInput | DevicesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DevicesScalarWhereInput | DevicesScalarWhereInput[]
+  }
+
   export type UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput = {
     create?: XOR<UserRoleMappingCreateWithoutUsersInput, UserRoleMappingUncheckedCreateWithoutUsersInput> | UserRoleMappingCreateWithoutUsersInput[] | UserRoleMappingUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleMappingCreateOrConnectWithoutUsersInput | UserRoleMappingCreateOrConnectWithoutUsersInput[]
@@ -7200,6 +8808,20 @@ export namespace Prisma {
     update?: UserRoleMappingUpdateWithWhereUniqueWithoutUsersInput | UserRoleMappingUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: UserRoleMappingUpdateManyWithWhereWithoutUsersInput | UserRoleMappingUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: UserRoleMappingScalarWhereInput | UserRoleMappingScalarWhereInput[]
+  }
+
+  export type DevicesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput> | DevicesCreateWithoutUserInput[] | DevicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DevicesCreateOrConnectWithoutUserInput | DevicesCreateOrConnectWithoutUserInput[]
+    upsert?: DevicesUpsertWithWhereUniqueWithoutUserInput | DevicesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DevicesCreateManyUserInputEnvelope
+    set?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    disconnect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    delete?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    connect?: DevicesWhereUniqueInput | DevicesWhereUniqueInput[]
+    update?: DevicesUpdateWithWhereUniqueWithoutUserInput | DevicesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DevicesUpdateManyWithWhereWithoutUserInput | DevicesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DevicesScalarWhereInput | DevicesScalarWhereInput[]
   }
 
   export type UserRoleMappingCreateNestedManyWithoutRolesInput = {
@@ -7290,6 +8912,20 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type UsersCreateNestedOneWithoutDevicesInput = {
+    create?: XOR<UsersCreateWithoutDevicesInput, UsersUncheckedCreateWithoutDevicesInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutDevicesInput
+    connect?: UsersWhereUniqueInput
+  }
+
+  export type UsersUpdateOneRequiredWithoutDevicesNestedInput = {
+    create?: XOR<UsersCreateWithoutDevicesInput, UsersUncheckedCreateWithoutDevicesInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutDevicesInput
+    upsert?: UsersUpsertWithoutDevicesInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutDevicesInput, UsersUpdateWithoutDevicesInput>, UsersUncheckedUpdateWithoutDevicesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7563,6 +9199,40 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DevicesCreateWithoutUserInput = {
+    id?: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DevicesUncheckedCreateWithoutUserInput = {
+    id?: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DevicesCreateOrConnectWithoutUserInput = {
+    where: DevicesWhereUniqueInput
+    create: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput>
+  }
+
+  export type DevicesCreateManyUserInputEnvelope = {
+    data: DevicesCreateManyUserInput | DevicesCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserRoleMappingUpsertWithWhereUniqueWithoutUsersInput = {
     where: UserRoleMappingWhereUniqueInput
     update: XOR<UserRoleMappingUpdateWithoutUsersInput, UserRoleMappingUncheckedUpdateWithoutUsersInput>
@@ -7589,6 +9259,38 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"UserRoleMapping"> | Date | string
     updatedAt?: DateTimeNullableFilter<"UserRoleMapping"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"UserRoleMapping"> | Date | string | null
+  }
+
+  export type DevicesUpsertWithWhereUniqueWithoutUserInput = {
+    where: DevicesWhereUniqueInput
+    update: XOR<DevicesUpdateWithoutUserInput, DevicesUncheckedUpdateWithoutUserInput>
+    create: XOR<DevicesCreateWithoutUserInput, DevicesUncheckedCreateWithoutUserInput>
+  }
+
+  export type DevicesUpdateWithWhereUniqueWithoutUserInput = {
+    where: DevicesWhereUniqueInput
+    data: XOR<DevicesUpdateWithoutUserInput, DevicesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DevicesUpdateManyWithWhereWithoutUserInput = {
+    where: DevicesScalarWhereInput
+    data: XOR<DevicesUpdateManyMutationInput, DevicesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DevicesScalarWhereInput = {
+    AND?: DevicesScalarWhereInput | DevicesScalarWhereInput[]
+    OR?: DevicesScalarWhereInput[]
+    NOT?: DevicesScalarWhereInput | DevicesScalarWhereInput[]
+    id?: StringFilter<"Devices"> | string
+    userId?: StringFilter<"Devices"> | string
+    fcmToken?: StringNullableFilter<"Devices"> | string | null
+    deviceSignature?: StringNullableFilter<"Devices"> | string | null
+    deviceType?: StringNullableFilter<"Devices"> | string | null
+    appVersion?: StringNullableFilter<"Devices"> | string | null
+    archive?: StringNullableFilter<"Devices"> | string | null
+    createdAt?: DateTimeFilter<"Devices"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
   }
 
   export type UserRoleMappingCreateWithoutRolesInput = {
@@ -7651,6 +9353,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    devices?: DevicesCreateNestedManyWithoutUserInput
   }
 
   export type UsersUncheckedCreateWithoutRolesInput = {
@@ -7671,6 +9374,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    devices?: DevicesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UsersCreateOrConnectWithoutRolesInput = {
@@ -7728,6 +9432,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    devices?: DevicesUpdateManyWithoutUserNestedInput
   }
 
   export type UsersUncheckedUpdateWithoutRolesInput = {
@@ -7748,6 +9453,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    devices?: DevicesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RolesUpsertWithoutUsersInput = {
@@ -7777,9 +9483,121 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type UsersCreateWithoutDevicesInput = {
+    id?: string
+    email: string
+    password: string
+    firstName?: string | null
+    lastName?: string | null
+    provider?: string | null
+    providerId?: string | null
+    referralCode?: string | null
+    countryId?: number | null
+    phone?: string | null
+    dateOfBirth?: string | null
+    acceptedTerms?: boolean
+    mfaEnabled?: boolean
+    mfaSecret?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    roles?: UserRoleMappingCreateNestedManyWithoutUsersInput
+  }
+
+  export type UsersUncheckedCreateWithoutDevicesInput = {
+    id?: string
+    email: string
+    password: string
+    firstName?: string | null
+    lastName?: string | null
+    provider?: string | null
+    providerId?: string | null
+    referralCode?: string | null
+    countryId?: number | null
+    phone?: string | null
+    dateOfBirth?: string | null
+    acceptedTerms?: boolean
+    mfaEnabled?: boolean
+    mfaSecret?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    roles?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type UsersCreateOrConnectWithoutDevicesInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutDevicesInput, UsersUncheckedCreateWithoutDevicesInput>
+  }
+
+  export type UsersUpsertWithoutDevicesInput = {
+    update: XOR<UsersUpdateWithoutDevicesInput, UsersUncheckedUpdateWithoutDevicesInput>
+    create: XOR<UsersCreateWithoutDevicesInput, UsersUncheckedCreateWithoutDevicesInput>
+    where?: UsersWhereInput
+  }
+
+  export type UsersUpdateToOneWithWhereWithoutDevicesInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutDevicesInput, UsersUncheckedUpdateWithoutDevicesInput>
+  }
+
+  export type UsersUpdateWithoutDevicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    referralCode?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableStringFieldUpdateOperationsInput | string | null
+    acceptedTerms?: BoolFieldUpdateOperationsInput | boolean
+    mfaEnabled?: BoolFieldUpdateOperationsInput | boolean
+    mfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleMappingUpdateManyWithoutUsersNestedInput
+  }
+
+  export type UsersUncheckedUpdateWithoutDevicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    referralCode?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableStringFieldUpdateOperationsInput | string | null
+    acceptedTerms?: BoolFieldUpdateOperationsInput | boolean
+    mfaEnabled?: BoolFieldUpdateOperationsInput | boolean
+    mfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
   export type UserRoleMappingCreateManyUsersInput = {
     id?: string
     roleId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DevicesCreateManyUserInput = {
+    id?: string
+    fcmToken?: string | null
+    deviceSignature?: string | null
+    deviceType?: string | null
+    appVersion?: string | null
+    archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -7804,6 +9622,42 @@ export namespace Prisma {
   export type UserRoleMappingUncheckedUpdateManyWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DevicesUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
+    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

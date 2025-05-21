@@ -30,6 +30,7 @@ model Users {
   updatedAt     DateTime?         @updatedAt
   deletedAt     DateTime?
   roles         UserRoleMapping[]
+  devices       Devices[]
 }
 
 enum Role {
@@ -41,7 +42,7 @@ model Roles {
   id        String            @id @default(uuid())
   role      Role              @default(USER)
   createdAt DateTime          @default(now())
-  updatedAt DateTime?
+  updatedAt DateTime?         @updatedAt
   deletedAt DateTime?
   users     UserRoleMapping[]
 }
@@ -58,8 +59,8 @@ model UserRoleMapping {
 }
 
 model Coins {
-  id               String @id @default(uuid())
-  coinId           BigInt @unique
+  id               String    @id @default(uuid())
+  coinId           BigInt    @unique
   nameId           String
   name             String
   priceUsd         String
@@ -72,4 +73,22 @@ model Coins {
   symbol           String
   marketCapUsd     String
   rank             Int
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime? @updatedAt
+  deletedAt        DateTime?
+}
+
+model Devices {
+  id              String    @id @default(uuid())
+  userId          String
+  fcmToken        String?
+  deviceSignature String?
+  deviceType      String?
+  appVersion      String?
+  archive         String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime? @updatedAt
+  deletedAt       DateTime?
+
+  user Users @relation(fields: [userId], references: [id])
 }

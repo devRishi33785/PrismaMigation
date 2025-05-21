@@ -171,7 +171,23 @@ exports.Prisma.CoinsScalarFieldEnum = {
   volume24a: 'volume24a',
   symbol: 'symbol',
   marketCapUsd: 'marketCapUsd',
-  rank: 'rank'
+  rank: 'rank',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.DevicesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  fcmToken: 'fcmToken',
+  deviceSignature: 'deviceSignature',
+  deviceType: 'deviceType',
+  appVersion: 'appVersion',
+  archive: 'archive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -197,7 +213,8 @@ exports.Prisma.ModelName = {
   Users: 'Users',
   Roles: 'Roles',
   UserRoleMapping: 'UserRoleMapping',
-  Coins: 'Coins'
+  Coins: 'Coins',
+  Devices: 'Devices'
 };
 
 /**
