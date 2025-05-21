@@ -5960,9 +5960,6 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     fcmToken: string | null
-    deviceSignature: string | null
-    deviceType: string | null
-    appVersion: string | null
     archive: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5973,9 +5970,6 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     fcmToken: string | null
-    deviceSignature: string | null
-    deviceType: string | null
-    appVersion: string | null
     archive: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5986,9 +5980,6 @@ export namespace Prisma {
     id: number
     userId: number
     fcmToken: number
-    deviceSignature: number
-    deviceType: number
-    appVersion: number
     archive: number
     createdAt: number
     updatedAt: number
@@ -6001,9 +5992,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     fcmToken?: true
-    deviceSignature?: true
-    deviceType?: true
-    appVersion?: true
     archive?: true
     createdAt?: true
     updatedAt?: true
@@ -6014,9 +6002,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     fcmToken?: true
-    deviceSignature?: true
-    deviceType?: true
-    appVersion?: true
     archive?: true
     createdAt?: true
     updatedAt?: true
@@ -6027,9 +6012,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     fcmToken?: true
-    deviceSignature?: true
-    deviceType?: true
-    appVersion?: true
     archive?: true
     createdAt?: true
     updatedAt?: true
@@ -6113,9 +6095,6 @@ export namespace Prisma {
     id: string
     userId: string
     fcmToken: string | null
-    deviceSignature: string | null
-    deviceType: string | null
-    appVersion: string | null
     archive: string | null
     createdAt: Date
     updatedAt: Date | null
@@ -6143,9 +6122,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     fcmToken?: boolean
-    deviceSignature?: boolean
-    deviceType?: boolean
-    appVersion?: boolean
     archive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6157,9 +6133,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     fcmToken?: boolean
-    deviceSignature?: boolean
-    deviceType?: boolean
-    appVersion?: boolean
     archive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6171,9 +6144,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     fcmToken?: boolean
-    deviceSignature?: boolean
-    deviceType?: boolean
-    appVersion?: boolean
     archive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6185,16 +6155,13 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     fcmToken?: boolean
-    deviceSignature?: boolean
-    deviceType?: boolean
-    appVersion?: boolean
     archive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type DevicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fcmToken" | "deviceSignature" | "deviceType" | "appVersion" | "archive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["devices"]>
+  export type DevicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fcmToken" | "archive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["devices"]>
   export type DevicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
   }
@@ -6214,9 +6181,6 @@ export namespace Prisma {
       id: string
       userId: string
       fcmToken: string | null
-      deviceSignature: string | null
-      deviceType: string | null
-      appVersion: string | null
       archive: string | null
       createdAt: Date
       updatedAt: Date | null
@@ -6648,9 +6612,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Devices", 'String'>
     readonly userId: FieldRef<"Devices", 'String'>
     readonly fcmToken: FieldRef<"Devices", 'String'>
-    readonly deviceSignature: FieldRef<"Devices", 'String'>
-    readonly deviceType: FieldRef<"Devices", 'String'>
-    readonly appVersion: FieldRef<"Devices", 'String'>
     readonly archive: FieldRef<"Devices", 'String'>
     readonly createdAt: FieldRef<"Devices", 'DateTime'>
     readonly updatedAt: FieldRef<"Devices", 'DateTime'>
@@ -7156,9 +7117,6 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     fcmToken: 'fcmToken',
-    deviceSignature: 'deviceSignature',
-    deviceType: 'deviceType',
-    appVersion: 'appVersion',
     archive: 'archive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -7650,9 +7608,6 @@ export namespace Prisma {
     id?: StringFilter<"Devices"> | string
     userId?: StringFilter<"Devices"> | string
     fcmToken?: StringNullableFilter<"Devices"> | string | null
-    deviceSignature?: StringNullableFilter<"Devices"> | string | null
-    deviceType?: StringNullableFilter<"Devices"> | string | null
-    appVersion?: StringNullableFilter<"Devices"> | string | null
     archive?: StringNullableFilter<"Devices"> | string | null
     createdAt?: DateTimeFilter<"Devices"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
@@ -7664,9 +7619,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     fcmToken?: SortOrderInput | SortOrder
-    deviceSignature?: SortOrderInput | SortOrder
-    deviceType?: SortOrderInput | SortOrder
-    appVersion?: SortOrderInput | SortOrder
     archive?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -7681,9 +7633,6 @@ export namespace Prisma {
     NOT?: DevicesWhereInput | DevicesWhereInput[]
     userId?: StringFilter<"Devices"> | string
     fcmToken?: StringNullableFilter<"Devices"> | string | null
-    deviceSignature?: StringNullableFilter<"Devices"> | string | null
-    deviceType?: StringNullableFilter<"Devices"> | string | null
-    appVersion?: StringNullableFilter<"Devices"> | string | null
     archive?: StringNullableFilter<"Devices"> | string | null
     createdAt?: DateTimeFilter<"Devices"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
@@ -7695,9 +7644,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     fcmToken?: SortOrderInput | SortOrder
-    deviceSignature?: SortOrderInput | SortOrder
-    deviceType?: SortOrderInput | SortOrder
-    appVersion?: SortOrderInput | SortOrder
     archive?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -7714,9 +7660,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Devices"> | string
     userId?: StringWithAggregatesFilter<"Devices"> | string
     fcmToken?: StringNullableWithAggregatesFilter<"Devices"> | string | null
-    deviceSignature?: StringNullableWithAggregatesFilter<"Devices"> | string | null
-    deviceType?: StringNullableWithAggregatesFilter<"Devices"> | string | null
-    appVersion?: StringNullableWithAggregatesFilter<"Devices"> | string | null
     archive?: StringNullableWithAggregatesFilter<"Devices"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Devices"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Devices"> | Date | string | null
@@ -8135,9 +8078,6 @@ export namespace Prisma {
   export type DevicesCreateInput = {
     id?: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -8149,9 +8089,6 @@ export namespace Prisma {
     id?: string
     userId: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -8161,9 +8098,6 @@ export namespace Prisma {
   export type DevicesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8175,9 +8109,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8188,9 +8119,6 @@ export namespace Prisma {
     id?: string
     userId: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -8200,9 +8128,6 @@ export namespace Prisma {
   export type DevicesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8213,9 +8138,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8677,9 +8599,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     fcmToken?: SortOrder
-    deviceSignature?: SortOrder
-    deviceType?: SortOrder
-    appVersion?: SortOrder
     archive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8690,9 +8609,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     fcmToken?: SortOrder
-    deviceSignature?: SortOrder
-    deviceType?: SortOrder
-    appVersion?: SortOrder
     archive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8703,9 +8619,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     fcmToken?: SortOrder
-    deviceSignature?: SortOrder
-    deviceType?: SortOrder
-    appVersion?: SortOrder
     archive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9202,9 +9115,6 @@ export namespace Prisma {
   export type DevicesCreateWithoutUserInput = {
     id?: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9214,9 +9124,6 @@ export namespace Prisma {
   export type DevicesUncheckedCreateWithoutUserInput = {
     id?: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9284,9 +9191,6 @@ export namespace Prisma {
     id?: StringFilter<"Devices"> | string
     userId?: StringFilter<"Devices"> | string
     fcmToken?: StringNullableFilter<"Devices"> | string | null
-    deviceSignature?: StringNullableFilter<"Devices"> | string | null
-    deviceType?: StringNullableFilter<"Devices"> | string | null
-    appVersion?: StringNullableFilter<"Devices"> | string | null
     archive?: StringNullableFilter<"Devices"> | string | null
     createdAt?: DateTimeFilter<"Devices"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Devices"> | Date | string | null
@@ -9594,9 +9498,6 @@ export namespace Prisma {
   export type DevicesCreateManyUserInput = {
     id?: string
     fcmToken?: string | null
-    deviceSignature?: string | null
-    deviceType?: string | null
-    appVersion?: string | null
     archive?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9630,9 +9531,6 @@ export namespace Prisma {
   export type DevicesUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9642,9 +9540,6 @@ export namespace Prisma {
   export type DevicesUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9654,9 +9549,6 @@ export namespace Prisma {
   export type DevicesUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     fcmToken?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceSignature?: NullableStringFieldUpdateOperationsInput | string | null
-    deviceType?: NullableStringFieldUpdateOperationsInput | string | null
-    appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     archive?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

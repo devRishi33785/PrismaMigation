@@ -79,16 +79,16 @@ model Coins {
 }
 
 model Devices {
-  id              String    @id @default(uuid())
-  userId          String
-  fcmToken        String?
-  deviceSignature String?
-  deviceType      String?
-  appVersion      String?
-  archive         String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime? @updatedAt
-  deletedAt       DateTime?
+  id        String    @id @default(uuid())
+  userId    String
+  fcmToken  String?
+  // deviceSignature String?
+  // deviceType      String?
+  // appVersion      String?
+  archive   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
 
   user Users @relation(fields: [userId], references: [id])
 }
