@@ -12,25 +12,25 @@ datasource db {
 }
 
 model Users {
-  id            String            @id @default(uuid())
-  email         String            @unique
-  password      String
-  firstName     String?
-  lastName      String?
-  provider      String?
-  providerId    String?
-  referralCode  String? // used if someone has invited the user
-  countryId     Int?
-  phone         String?
-  dateOfBirth   String?
-  acceptedTerms Boolean           @default(false)
-  mfaEnabled    Boolean           @default(false)
-  mfaSecret     String?
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime?         @updatedAt
-  deletedAt     DateTime?
-  roles         UserRoleMapping[]
-  devices       Devices[]
+  id              String            @id @default(uuid())
+  email           String            @unique
+  password        String
+  firstName       String?
+  lastName        String?
+  provider        String?
+  providerId      String?
+  referralCode    String? // used if someone has invited the user
+  countryId       Int?
+  phone           String?
+  dateOfBirth     String?
+  acceptedTerms   Boolean           @default(false)
+  mfaEnabled      Boolean           @default(false)
+  mfaSecret       String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime?         @updatedAt
+  deletedAt       DateTime?
+  userRoleMapping UserRoleMapping[]
+  devices         Devices[]
 }
 
 enum Role {

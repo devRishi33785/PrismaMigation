@@ -1250,12 +1250,12 @@ export namespace Prisma {
    */
 
   export type UsersCountOutputType = {
-    roles: number
+    userRoleMapping: number
     devices: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    roles?: boolean | UsersCountOutputTypeCountRolesArgs
+    userRoleMapping?: boolean | UsersCountOutputTypeCountUserRoleMappingArgs
     devices?: boolean | UsersCountOutputTypeCountDevicesArgs
   }
 
@@ -1273,7 +1273,7 @@ export namespace Prisma {
   /**
    * UsersCountOutputType without action
    */
-  export type UsersCountOutputTypeCountRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeCountUserRoleMappingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserRoleMappingWhereInput
   }
 
@@ -1614,7 +1614,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    roles?: boolean | Users$rolesArgs<ExtArgs>
+    userRoleMapping?: boolean | Users$userRoleMappingArgs<ExtArgs>
     devices?: boolean | Users$devicesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
@@ -1681,7 +1681,7 @@ export namespace Prisma {
 
   export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "provider" | "providerId" | "referralCode" | "countryId" | "phone" | "dateOfBirth" | "acceptedTerms" | "mfaEnabled" | "mfaSecret" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    roles?: boolean | Users$rolesArgs<ExtArgs>
+    userRoleMapping?: boolean | Users$userRoleMappingArgs<ExtArgs>
     devices?: boolean | Users$devicesArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -1691,7 +1691,7 @@ export namespace Prisma {
   export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Users"
     objects: {
-      roles: Prisma.$UserRoleMappingPayload<ExtArgs>[]
+      userRoleMapping: Prisma.$UserRoleMappingPayload<ExtArgs>[]
       devices: Prisma.$DevicesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2106,7 +2106,7 @@ export namespace Prisma {
    */
   export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    roles<T extends Users$rolesArgs<ExtArgs> = {}>(args?: Subset<T, Users$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRoleMappingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userRoleMapping<T extends Users$userRoleMappingArgs<ExtArgs> = {}>(args?: Subset<T, Users$userRoleMappingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRoleMappingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     devices<T extends Users$devicesArgs<ExtArgs> = {}>(args?: Subset<T, Users$devicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2542,9 +2542,9 @@ export namespace Prisma {
   }
 
   /**
-   * Users.roles
+   * Users.userRoleMapping
    */
-  export type Users$rolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Users$userRoleMappingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the UserRoleMapping
      */
@@ -7270,7 +7270,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
-    roles?: UserRoleMappingListRelationFilter
+    userRoleMapping?: UserRoleMappingListRelationFilter
     devices?: DevicesListRelationFilter
   }
 
@@ -7292,7 +7292,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    roles?: UserRoleMappingOrderByRelationAggregateInput
+    userRoleMapping?: UserRoleMappingOrderByRelationAggregateInput
     devices?: DevicesOrderByRelationAggregateInput
   }
 
@@ -7317,7 +7317,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Users"> | Date | string | null
-    roles?: UserRoleMappingListRelationFilter
+    userRoleMapping?: UserRoleMappingListRelationFilter
     devices?: DevicesListRelationFilter
   }, "id" | "email">
 
@@ -7684,7 +7684,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    roles?: UserRoleMappingCreateNestedManyWithoutUsersInput
+    userRoleMapping?: UserRoleMappingCreateNestedManyWithoutUsersInput
     devices?: DevicesCreateNestedManyWithoutUserInput
   }
 
@@ -7706,7 +7706,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    roles?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
+    userRoleMapping?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
     devices?: DevicesUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -7728,7 +7728,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    roles?: UserRoleMappingUpdateManyWithoutUsersNestedInput
+    userRoleMapping?: UserRoleMappingUpdateManyWithoutUsersNestedInput
     devices?: DevicesUpdateManyWithoutUserNestedInput
   }
 
@@ -7750,7 +7750,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    roles?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
+    userRoleMapping?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
     devices?: DevicesUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -7879,7 +7879,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    users: UsersCreateNestedOneWithoutRolesInput
+    users: UsersCreateNestedOneWithoutUserRoleMappingInput
     roles: RolesCreateNestedOneWithoutUsersInput
   }
 
@@ -7897,7 +7897,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    users?: UsersUpdateOneRequiredWithoutRolesNestedInput
+    users?: UsersUpdateOneRequiredWithoutUserRoleMappingNestedInput
     roles?: RolesUpdateOneRequiredWithoutUsersNestedInput
   }
 
@@ -8783,9 +8783,9 @@ export namespace Prisma {
     deleteMany?: UserRoleMappingScalarWhereInput | UserRoleMappingScalarWhereInput[]
   }
 
-  export type UsersCreateNestedOneWithoutRolesInput = {
-    create?: XOR<UsersCreateWithoutRolesInput, UsersUncheckedCreateWithoutRolesInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutRolesInput
+  export type UsersCreateNestedOneWithoutUserRoleMappingInput = {
+    create?: XOR<UsersCreateWithoutUserRoleMappingInput, UsersUncheckedCreateWithoutUserRoleMappingInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUserRoleMappingInput
     connect?: UsersWhereUniqueInput
   }
 
@@ -8795,12 +8795,12 @@ export namespace Prisma {
     connect?: RolesWhereUniqueInput
   }
 
-  export type UsersUpdateOneRequiredWithoutRolesNestedInput = {
-    create?: XOR<UsersCreateWithoutRolesInput, UsersUncheckedCreateWithoutRolesInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutRolesInput
-    upsert?: UsersUpsertWithoutRolesInput
+  export type UsersUpdateOneRequiredWithoutUserRoleMappingNestedInput = {
+    create?: XOR<UsersCreateWithoutUserRoleMappingInput, UsersUncheckedCreateWithoutUserRoleMappingInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutUserRoleMappingInput
+    upsert?: UsersUpsertWithoutUserRoleMappingInput
     connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutRolesInput, UsersUpdateWithoutRolesInput>, UsersUncheckedUpdateWithoutRolesInput>
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutUserRoleMappingInput, UsersUpdateWithoutUserRoleMappingInput>, UsersUncheckedUpdateWithoutUserRoleMappingInput>
   }
 
   export type RolesUpdateOneRequiredWithoutUsersNestedInput = {
@@ -9202,7 +9202,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    users: UsersCreateNestedOneWithoutRolesInput
+    users: UsersCreateNestedOneWithoutUserRoleMappingInput
   }
 
   export type UserRoleMappingUncheckedCreateWithoutRolesInput = {
@@ -9239,7 +9239,7 @@ export namespace Prisma {
     data: XOR<UserRoleMappingUpdateManyMutationInput, UserRoleMappingUncheckedUpdateManyWithoutRolesInput>
   }
 
-  export type UsersCreateWithoutRolesInput = {
+  export type UsersCreateWithoutUserRoleMappingInput = {
     id?: string
     email: string
     password: string
@@ -9260,7 +9260,7 @@ export namespace Prisma {
     devices?: DevicesCreateNestedManyWithoutUserInput
   }
 
-  export type UsersUncheckedCreateWithoutRolesInput = {
+  export type UsersUncheckedCreateWithoutUserRoleMappingInput = {
     id?: string
     email: string
     password: string
@@ -9281,9 +9281,9 @@ export namespace Prisma {
     devices?: DevicesUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UsersCreateOrConnectWithoutRolesInput = {
+  export type UsersCreateOrConnectWithoutUserRoleMappingInput = {
     where: UsersWhereUniqueInput
-    create: XOR<UsersCreateWithoutRolesInput, UsersUncheckedCreateWithoutRolesInput>
+    create: XOR<UsersCreateWithoutUserRoleMappingInput, UsersUncheckedCreateWithoutUserRoleMappingInput>
   }
 
   export type RolesCreateWithoutUsersInput = {
@@ -9307,18 +9307,18 @@ export namespace Prisma {
     create: XOR<RolesCreateWithoutUsersInput, RolesUncheckedCreateWithoutUsersInput>
   }
 
-  export type UsersUpsertWithoutRolesInput = {
-    update: XOR<UsersUpdateWithoutRolesInput, UsersUncheckedUpdateWithoutRolesInput>
-    create: XOR<UsersCreateWithoutRolesInput, UsersUncheckedCreateWithoutRolesInput>
+  export type UsersUpsertWithoutUserRoleMappingInput = {
+    update: XOR<UsersUpdateWithoutUserRoleMappingInput, UsersUncheckedUpdateWithoutUserRoleMappingInput>
+    create: XOR<UsersCreateWithoutUserRoleMappingInput, UsersUncheckedCreateWithoutUserRoleMappingInput>
     where?: UsersWhereInput
   }
 
-  export type UsersUpdateToOneWithWhereWithoutRolesInput = {
+  export type UsersUpdateToOneWithWhereWithoutUserRoleMappingInput = {
     where?: UsersWhereInput
-    data: XOR<UsersUpdateWithoutRolesInput, UsersUncheckedUpdateWithoutRolesInput>
+    data: XOR<UsersUpdateWithoutUserRoleMappingInput, UsersUncheckedUpdateWithoutUserRoleMappingInput>
   }
 
-  export type UsersUpdateWithoutRolesInput = {
+  export type UsersUpdateWithoutUserRoleMappingInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9339,7 +9339,7 @@ export namespace Prisma {
     devices?: DevicesUpdateManyWithoutUserNestedInput
   }
 
-  export type UsersUncheckedUpdateWithoutRolesInput = {
+  export type UsersUncheckedUpdateWithoutUserRoleMappingInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9405,7 +9405,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    roles?: UserRoleMappingCreateNestedManyWithoutUsersInput
+    userRoleMapping?: UserRoleMappingCreateNestedManyWithoutUsersInput
   }
 
   export type UsersUncheckedCreateWithoutDevicesInput = {
@@ -9426,7 +9426,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    roles?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
+    userRoleMapping?: UserRoleMappingUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type UsersCreateOrConnectWithoutDevicesInput = {
@@ -9463,7 +9463,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    roles?: UserRoleMappingUpdateManyWithoutUsersNestedInput
+    userRoleMapping?: UserRoleMappingUpdateManyWithoutUsersNestedInput
   }
 
   export type UsersUncheckedUpdateWithoutDevicesInput = {
@@ -9484,7 +9484,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    roles?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
+    userRoleMapping?: UserRoleMappingUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type UserRoleMappingCreateManyUsersInput = {
@@ -9568,7 +9568,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    users?: UsersUpdateOneRequiredWithoutRolesNestedInput
+    users?: UsersUpdateOneRequiredWithoutUserRoleMappingNestedInput
   }
 
   export type UserRoleMappingUncheckedUpdateWithoutRolesInput = {
