@@ -7180,14 +7180,24 @@ export namespace Prisma {
 
   export type AggregateUserWallet = {
     _count: UserWalletCountAggregateOutputType | null
+    _avg: UserWalletAvgAggregateOutputType | null
+    _sum: UserWalletSumAggregateOutputType | null
     _min: UserWalletMinAggregateOutputType | null
     _max: UserWalletMaxAggregateOutputType | null
+  }
+
+  export type UserWalletAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type UserWalletSumAggregateOutputType = {
+    amount: number | null
   }
 
   export type UserWalletMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    amount: string | null
+    amount: number | null
     currency: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7197,7 +7207,7 @@ export namespace Prisma {
   export type UserWalletMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    amount: string | null
+    amount: number | null
     currency: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7215,6 +7225,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type UserWalletAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type UserWalletSumAggregateInputType = {
+    amount?: true
+  }
 
   export type UserWalletMinAggregateInputType = {
     id?: true
@@ -7285,6 +7303,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserWalletAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserWalletSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserWalletMinAggregateInputType
@@ -7315,6 +7345,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserWalletCountAggregateInputType | true
+    _avg?: UserWalletAvgAggregateInputType
+    _sum?: UserWalletSumAggregateInputType
     _min?: UserWalletMinAggregateInputType
     _max?: UserWalletMaxAggregateInputType
   }
@@ -7322,12 +7354,14 @@ export namespace Prisma {
   export type UserWalletGroupByOutputType = {
     id: string
     userId: string
-    amount: string
+    amount: number
     currency: string
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
     _count: UserWalletCountAggregateOutputType | null
+    _avg: UserWalletAvgAggregateOutputType | null
+    _sum: UserWalletSumAggregateOutputType | null
     _min: UserWalletMinAggregateOutputType | null
     _max: UserWalletMaxAggregateOutputType | null
   }
@@ -7408,7 +7442,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      amount: string
+      amount: number
       currency: string
       createdAt: Date
       updatedAt: Date | null
@@ -7839,7 +7873,7 @@ export namespace Prisma {
   interface UserWalletFieldRefs {
     readonly id: FieldRef<"UserWallet", 'String'>
     readonly userId: FieldRef<"UserWallet", 'String'>
-    readonly amount: FieldRef<"UserWallet", 'String'>
+    readonly amount: FieldRef<"UserWallet", 'Int'>
     readonly currency: FieldRef<"UserWallet", 'String'>
     readonly createdAt: FieldRef<"UserWallet", 'DateTime'>
     readonly updatedAt: FieldRef<"UserWallet", 'DateTime'>
@@ -8928,7 +8962,7 @@ export namespace Prisma {
     NOT?: UserWalletWhereInput | UserWalletWhereInput[]
     id?: StringFilter<"UserWallet"> | string
     userId?: StringFilter<"UserWallet"> | string
-    amount?: StringFilter<"UserWallet"> | string
+    amount?: IntFilter<"UserWallet"> | number
     currency?: StringFilter<"UserWallet"> | string
     createdAt?: DateTimeFilter<"UserWallet"> | Date | string
     updatedAt?: DateTimeNullableFilter<"UserWallet"> | Date | string | null
@@ -8953,7 +8987,7 @@ export namespace Prisma {
     AND?: UserWalletWhereInput | UserWalletWhereInput[]
     OR?: UserWalletWhereInput[]
     NOT?: UserWalletWhereInput | UserWalletWhereInput[]
-    amount?: StringFilter<"UserWallet"> | string
+    amount?: IntFilter<"UserWallet"> | number
     currency?: StringFilter<"UserWallet"> | string
     createdAt?: DateTimeFilter<"UserWallet"> | Date | string
     updatedAt?: DateTimeNullableFilter<"UserWallet"> | Date | string | null
@@ -8970,8 +9004,10 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
     _count?: UserWalletCountOrderByAggregateInput
+    _avg?: UserWalletAvgOrderByAggregateInput
     _max?: UserWalletMaxOrderByAggregateInput
     _min?: UserWalletMinOrderByAggregateInput
+    _sum?: UserWalletSumOrderByAggregateInput
   }
 
   export type UserWalletScalarWhereWithAggregatesInput = {
@@ -8980,7 +9016,7 @@ export namespace Prisma {
     NOT?: UserWalletScalarWhereWithAggregatesInput | UserWalletScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserWallet"> | string
     userId?: StringWithAggregatesFilter<"UserWallet"> | string
-    amount?: StringWithAggregatesFilter<"UserWallet"> | string
+    amount?: IntWithAggregatesFilter<"UserWallet"> | number
     currency?: StringWithAggregatesFilter<"UserWallet"> | string
     createdAt?: DateTimeWithAggregatesFilter<"UserWallet"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"UserWallet"> | Date | string | null
@@ -9485,7 +9521,7 @@ export namespace Prisma {
 
   export type UserWalletCreateInput = {
     id?: string
-    amount: string
+    amount: number
     currency?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9496,7 +9532,7 @@ export namespace Prisma {
   export type UserWalletUncheckedCreateInput = {
     id?: string
     userId: string
-    amount: string
+    amount: number
     currency?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9505,7 +9541,7 @@ export namespace Prisma {
 
   export type UserWalletUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9516,7 +9552,7 @@ export namespace Prisma {
   export type UserWalletUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9526,7 +9562,7 @@ export namespace Prisma {
   export type UserWalletCreateManyInput = {
     id?: string
     userId: string
-    amount: string
+    amount: number
     currency?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -9535,7 +9571,7 @@ export namespace Prisma {
 
   export type UserWalletUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9545,7 +9581,7 @@ export namespace Prisma {
   export type UserWalletUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10056,6 +10092,10 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
+  export type UserWalletAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
   export type UserWalletMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -10074,6 +10114,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+  }
+
+  export type UserWalletSumOrderByAggregateInput = {
+    amount?: SortOrder
   }
 
   export type UserRoleMappingCreateNestedManyWithoutUsersInput = {
@@ -10639,7 +10683,7 @@ export namespace Prisma {
 
   export type UserWalletCreateWithoutUserInput = {
     id?: string
-    amount: string
+    amount: number
     currency?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -10648,7 +10692,7 @@ export namespace Prisma {
 
   export type UserWalletUncheckedCreateWithoutUserInput = {
     id?: string
-    amount: string
+    amount: number
     currency?: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -10730,7 +10774,7 @@ export namespace Prisma {
 
   export type UserWalletUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10739,7 +10783,7 @@ export namespace Prisma {
 
   export type UserWalletUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

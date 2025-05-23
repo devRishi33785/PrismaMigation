@@ -99,7 +99,7 @@ model Devices {
 model UserWallet {
   id        String    @id @default(uuid())
   userId    String    @unique
-  amount    String
+  amount    Int
   currency  String    @default("USD")
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
