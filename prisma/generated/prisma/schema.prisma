@@ -31,6 +31,7 @@ model Users {
   deletedAt       DateTime?
   userRoleMapping UserRoleMapping[]
   devices         Devices[]
+  userWallet      UserWallet?
 }
 
 enum Role {
@@ -73,6 +74,8 @@ model Coins {
   symbol           String
   marketCapUsd     String
   rank             Int
+  volume           Int       @default(10000)
+  isVisible        Boolean   @default(true)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime? @updatedAt
   deletedAt        DateTime?
@@ -86,6 +89,18 @@ model Devices {
   // deviceType      String?
   // appVersion      String?
   archive   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  user Users @relation(fields: [userId], references: [id])
+}
+
+model UserWallet {
+  id        String    @id @default(uuid())
+  userId    String    @unique
+  amount    String
+  currency  String    @default("USD")
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   deletedAt DateTime?

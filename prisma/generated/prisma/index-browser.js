@@ -172,6 +172,8 @@ exports.Prisma.CoinsScalarFieldEnum = {
   symbol: 'symbol',
   marketCapUsd: 'marketCapUsd',
   rank: 'rank',
+  volume: 'volume',
+  isVisible: 'isVisible',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -182,6 +184,16 @@ exports.Prisma.DevicesScalarFieldEnum = {
   userId: 'userId',
   fcmToken: 'fcmToken',
   archive: 'archive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.UserWalletScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  amount: 'amount',
+  currency: 'currency',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -211,7 +223,8 @@ exports.Prisma.ModelName = {
   Roles: 'Roles',
   UserRoleMapping: 'UserRoleMapping',
   Coins: 'Coins',
-  Devices: 'Devices'
+  Devices: 'Devices',
+  UserWallet: 'UserWallet'
 };
 
 /**
