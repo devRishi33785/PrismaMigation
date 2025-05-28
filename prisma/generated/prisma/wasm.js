@@ -203,6 +203,7 @@ exports.Prisma.AppConfigScalarFieldEnum = {
   id: 'id',
   key: 'key',
   value: 'value',
+  type: 'type',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

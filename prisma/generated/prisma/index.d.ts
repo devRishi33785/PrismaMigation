@@ -8397,6 +8397,7 @@ export namespace Prisma {
     id: string | null
     key: string | null
     value: string | null
+    type: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -8406,6 +8407,7 @@ export namespace Prisma {
     id: string | null
     key: string | null
     value: string | null
+    type: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -8415,6 +8417,7 @@ export namespace Prisma {
     id: number
     key: number
     value: number
+    type: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -8426,6 +8429,7 @@ export namespace Prisma {
     id?: true
     key?: true
     value?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -8435,6 +8439,7 @@ export namespace Prisma {
     id?: true
     key?: true
     value?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -8444,6 +8449,7 @@ export namespace Prisma {
     id?: true
     key?: true
     value?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -8526,6 +8532,7 @@ export namespace Prisma {
     id: string
     key: string
     value: string
+    type: string
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
@@ -8552,6 +8559,7 @@ export namespace Prisma {
     id?: boolean
     key?: boolean
     value?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -8561,6 +8569,7 @@ export namespace Prisma {
     id?: boolean
     key?: boolean
     value?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -8570,6 +8579,7 @@ export namespace Prisma {
     id?: boolean
     key?: boolean
     value?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -8579,12 +8589,13 @@ export namespace Prisma {
     id?: boolean
     key?: boolean
     value?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type AppConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "value" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["appConfig"]>
+  export type AppConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "value" | "type" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["appConfig"]>
 
   export type $AppConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AppConfig"
@@ -8593,6 +8604,7 @@ export namespace Prisma {
       id: string
       key: string
       value: string
+      type: string
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
@@ -9022,6 +9034,7 @@ export namespace Prisma {
     readonly id: FieldRef<"AppConfig", 'String'>
     readonly key: FieldRef<"AppConfig", 'String'>
     readonly value: FieldRef<"AppConfig", 'String'>
+    readonly type: FieldRef<"AppConfig", 'String'>
     readonly createdAt: FieldRef<"AppConfig", 'DateTime'>
     readonly updatedAt: FieldRef<"AppConfig", 'DateTime'>
     readonly deletedAt: FieldRef<"AppConfig", 'DateTime'>
@@ -9506,6 +9519,7 @@ export namespace Prisma {
     id: 'id',
     key: 'key',
     value: 'value',
+    type: 'type',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -10141,6 +10155,7 @@ export namespace Prisma {
     id?: StringFilter<"AppConfig"> | string
     key?: StringFilter<"AppConfig"> | string
     value?: StringFilter<"AppConfig"> | string
+    type?: StringFilter<"AppConfig"> | string
     createdAt?: DateTimeFilter<"AppConfig"> | Date | string
     updatedAt?: DateTimeNullableFilter<"AppConfig"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"AppConfig"> | Date | string | null
@@ -10150,6 +10165,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     value?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -10162,6 +10178,7 @@ export namespace Prisma {
     NOT?: AppConfigWhereInput | AppConfigWhereInput[]
     key?: StringFilter<"AppConfig"> | string
     value?: StringFilter<"AppConfig"> | string
+    type?: StringFilter<"AppConfig"> | string
     createdAt?: DateTimeFilter<"AppConfig"> | Date | string
     updatedAt?: DateTimeNullableFilter<"AppConfig"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"AppConfig"> | Date | string | null
@@ -10171,6 +10188,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     value?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -10186,6 +10204,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"AppConfig"> | string
     key?: StringWithAggregatesFilter<"AppConfig"> | string
     value?: StringWithAggregatesFilter<"AppConfig"> | string
+    type?: StringWithAggregatesFilter<"AppConfig"> | string
     createdAt?: DateTimeWithAggregatesFilter<"AppConfig"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"AppConfig"> | Date | string | null
     deletedAt?: DateTimeNullableWithAggregatesFilter<"AppConfig"> | Date | string | null
@@ -10760,6 +10779,7 @@ export namespace Prisma {
     id?: string
     key: string
     value: string
+    type: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10769,6 +10789,7 @@ export namespace Prisma {
     id?: string
     key: string
     value: string
+    type: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10778,6 +10799,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10787,6 +10809,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10796,6 +10819,7 @@ export namespace Prisma {
     id?: string
     key: string
     value: string
+    type: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10805,6 +10829,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10814,6 +10839,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11355,6 +11381,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     value?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -11364,6 +11391,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     value?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -11373,6 +11401,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     value?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder

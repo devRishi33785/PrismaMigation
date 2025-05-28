@@ -112,6 +112,7 @@ model AppConfig {
   id    String @id @default(uuid())
   key   String
   value String
+  type  String
 
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
