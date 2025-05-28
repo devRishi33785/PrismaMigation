@@ -107,3 +107,13 @@ model UserWallet {
 
   user Users @relation(fields: [userId], references: [id])
 }
+
+model AppConfig {
+  id    String @id @default(uuid())
+  key   String
+  value String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+}

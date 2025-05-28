@@ -199,6 +199,15 @@ exports.Prisma.UserWalletScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
+exports.Prisma.AppConfigScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -224,7 +233,8 @@ exports.Prisma.ModelName = {
   UserRoleMapping: 'UserRoleMapping',
   Coins: 'Coins',
   Devices: 'Devices',
-  UserWallet: 'UserWallet'
+  UserWallet: 'UserWallet',
+  AppConfig: 'AppConfig'
 };
 
 /**
