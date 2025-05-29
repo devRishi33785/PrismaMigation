@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:123456@localhost:5432/coinservice?sslmode=disabled"
+  url      = "postgres://postgres:ledger_123@rk-exchange-auth-db.ch24a420acii.ap-south-1.rds.amazonaws.com:5432/exchange?sslmode=disabled"
 }
 
 model Users {
