@@ -209,6 +209,26 @@ exports.Prisma.AppConfigScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
+exports.Prisma.TradingGroupScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  baseCoinId: 'baseCoinId',
+  quoteCoinId: 'quoteCoinId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.GroupTradeScalarFieldEnum = {
+  id: 'id',
+  groupId: 'groupId',
+  userId: 'userId',
+  amountBase: 'amountBase',
+  amountQuote: 'amountQuote',
+  price: 'price',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -235,7 +255,9 @@ exports.Prisma.ModelName = {
   Coins: 'Coins',
   Devices: 'Devices',
   UserWallet: 'UserWallet',
-  AppConfig: 'AppConfig'
+  AppConfig: 'AppConfig',
+  TradingGroup: 'TradingGroup',
+  GroupTrade: 'GroupTrade'
 };
 
 /**

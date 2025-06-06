@@ -33,6 +33,9 @@ model Users {
   userRoleMapping UserRoleMapping[]
   devices         Devices[]
   userWallet      UserWallet?
+  groupTrades     GroupTrade[]
+
+  @@index([email])
 }
 
 enum Role {
@@ -80,6 +83,11 @@ model Coins {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime? @updatedAt
   deletedAt        DateTime?
+
+  tradingGroupBase  TradingGroup[] @relation("BaseCoin")
+  tradingGroupQuote TradingGroup[] @relation("QuoteCoin")
+
+  @@index([coinId])
 }
 
 model Devices {
@@ -95,6 +103,8 @@ model Devices {
   deletedAt DateTime?
 
   user Users @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 model UserWallet {
@@ -118,4 +128,35 @@ model AppConfig {
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   deletedAt DateTime?
+}
+
+model TradingGroup {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  baseCoinId  String
+  quoteCoinId String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+  deletedAt   DateTime?
+
+  baseCoin  Coins        @relation("BaseCoin", fields: [baseCoinId], references: [id])
+  quoteCoin Coins        @relation("QuoteCoin", fields: [quoteCoinId], references: [id])
+  trades    GroupTrade[]
+
+  @@index([name])
+}
+
+model GroupTrade {
+  id          String   @id @default(uuid())
+  groupId     String
+  userId      String
+  amountBase  Float // Amount of base coin (e.g., BTC)
+  amountQuote Float // Amount of quote coin (e.g., USDT)
+  price       Float // Price of base coin in quote coin (e.g., BTC/USDT price)
+  createdAt   DateTime @default(now())
+
+  group TradingGroup @relation(fields: [groupId], references: [id])
+  user  Users        @relation(fields: [userId], references: [id])
+
+  @@index([groupId, userId])
 }
